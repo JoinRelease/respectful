@@ -33,14 +33,15 @@ gem 'unicorn'
 
 gem 'bundler', '>= 1.8.4'
 gem 'devise'
-
 gem 'sidekiq'
+gem 'sinatra', require: false
 gem 'high_voltage'
 gem 'wicked'
+gem 'fancybox2-rails'
+gem 'figaro'
 
 # Assets
 gem 'non-stupid-digest-assets'
-gem 'asset_sync'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-jquery-ujs'
@@ -53,9 +54,14 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-jquery-ui'
   gem 'rails-assets-jquery-ui-bootstrap'
   gem 'rails-assets-jquery-cookie'
-  gem 'rails-assets-jquery-steps'
   gem 'rails-assets-jquery-validate'
   gem "rails-assets-fontawesome", '4.3.0'
+  gem 'rails-assets-jquery-pjax'
+  gem 'rails-assets-animate-css'
+  gem 'rails-assets-wow'
+  gem 'rails-assets-FitText.js'
+  gem 'rails-assets-jquery.easing'
+  gem 'rails-assets-jquery-maskedinput'
 end
 
 group :development do
@@ -72,12 +78,14 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring', '1.3.4'
-  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'faker'
+
 end
 
 group :test do
-  gem 'factory_girl_rails'
-  gem 'faker'
+  gem 'rspec-rails'
+  gem "shoulda-matchers"
 end
 
 group :production do

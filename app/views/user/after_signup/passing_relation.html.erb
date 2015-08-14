@@ -1,0 +1,76 @@
+<div class="wizard">
+  <%= form_for @user, url: wizard_path, method: :put do |f| %>
+    <legend>Relation to Loved One</legend>
+    <div class="row content">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>We're sorry to head about <%= @passing.first_name %>'s passing.</span>
+      </div>
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>How were you related?</span>
+      </div>
+
+      <br>
+
+      <div class="radios col-md-6 col-sm-6 col-xs-12">
+        <%= f.fields_for :passings, @passing do |b| %>
+          <div class="center-block">
+            <%= b.radio_button :relation, 'spouse/partner', class: 'input-hidden'  %>
+            <%= b.label :relation, value: 'spouse/partner', class: '' do %>
+              <div class="label-text"> Spouse/Partner </div>
+            <% end -%>
+
+            <%= b.radio_button :relation, 'child', class: 'input-hidden'  %>
+            <%= b.label :relation, value: 'child', class: '' do %>
+              <div class="label-text"> Child </div>
+            <% end -%>
+
+            <%= b.radio_button :relation, 'sibling', class: 'input-hidden'  %>
+            <%= b.label :relation, value: 'sibling', class: '' do %>
+              <div class="label-text"> Sibling</div>
+            <% end -%>
+
+            <%= b.radio_button :relation, 'parent', class: 'input-hidden'  %>
+            <%= b.label :relation, value: 'parent', class: '' do %>
+              <div class="label-text"> Parent </div>
+            <% end -%>
+
+            <%= b.radio_button :relation, 'other family', class: 'input-hidden'  %>
+            <%= b.label :relation, value: 'other family', class: '' do %>
+              <div class="label-text"> Other Family </div>
+            <% end -%>
+
+            <%= b.radio_button :relation, 'other', class: 'input-hidden' %>
+            <%= b.label :relation, value: 'other', class: '' do %>
+              <div class="label-text"> Other </div>
+            <% end -%>
+
+          </div>
+        <% end -%>
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Help!
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+
+        </aside>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-3 pull-left actions">
+        <%= link_to "Back", previous_wizard_path, class: 'btn btn-primary' %>
+      </div>
+      <div class="col-md-3 pull-right actions">
+        <%= f.submit "Next", class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end -%>
+</div>

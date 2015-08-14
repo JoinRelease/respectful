@@ -1,0 +1,60 @@
+<div class="wizard">
+  <%= form_for @user, url: wizard_path, method: :put do |f| %>
+    <legend><%= @passing.first_name %>'s Location</legend>
+    <div class="row content">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>And currently where is <%= @passing.first_name %> ?</span>
+      </div>
+      <br>
+      <div class="radios col-md-6 col-sm-6 col-xs-12">
+        <%= f.fields_for :passings, @passing do |b| %>
+          <div class="center-block">
+            <%= b.radio_button :location_of_passing, 'Hospital', class: 'input-hidden'  %>
+            <%= b.label :location_of_passing, value: 'Hospital', class: '' do %>
+              <div class="label-text"> Hospital </div>
+            <% end -%>
+
+            <%= b.radio_button :location_of_passing, 'Home', class: 'input-hidden'  %>
+            <%= b.label :location_of_passing, value: 'Home', class: '' do %>
+              <div class="label-text"> Home </div>
+            <% end -%>
+
+            <%= b.radio_button :location_of_passing, 'Hospice', class: 'input-hidden'  %>
+            <%= b.label :location_of_passing, value: 'Hospice', class: '' do %>
+              <div class="label-text"> Hospice</div>
+            <% end -%>
+
+            <%= b.radio_button :location_of_passing, 'Other', class: 'input-hidden'  %>
+            <%= b.label :location_of_passing, value: 'Other', class: '' do %>
+              <div class="label-text"> Other </div>
+            <% end -%>
+          </div>
+        <% end -%>
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Help!
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+
+        </aside>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-3 pull-left actions">
+        <%= link_to "Back", previous_wizard_path, class: 'btn btn-primary' %>
+      </div>
+      <div class="col-md-3 pull-right actions">
+        <%= f.submit "Next", class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end -%>
+</div>

@@ -1,0 +1,65 @@
+<div class="wizard">
+  <%= form_for @burial, url: wizard_path,  method: :put do |f| %>
+    <legend>Type of Service Space</legend>
+    <div class="row content">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>Where do you think you'd like to hold the service?</span>
+      </div>
+      <div class="error col-md-12 col-sm-12 col-xs-12">
+        <span></span>
+      </div>
+
+      <br>
+
+      <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+        <div class= "radios">
+          <%= f.radio_button :type_of_service_space, 'funeral home', class: 'input-hidden' %>
+          <%= f.label :type_of_service_space, value: 'funeral home', class: '' do %>
+            <div class="label-text"> Funeral Home </div>
+          <% end -%>
+
+          <%= f.radio_button :type_of_service_space, 'worship space', class: 'input-hidden' %>
+          <%= f.label :type_of_service_space, value: 'worship space', class: '' do %>
+            <div class="label-text"> Worship Space</div>
+          <% end -%>
+
+          <%= f.radio_button :type_of_service_space, 'burial space', class: 'input-hidden' %>
+          <%= f.label :type_of_service_space, value: 'burial space', class: '' do %>
+            <div class="label-text"> Burial Space</div>
+          <% end -%>
+
+          <%= f.radio_button :type_of_service_space, 'another space', class: 'input-hidden' %>
+          <%= f.label :type_of_service_space, value: 'another space', class: '' do %>
+            <div class="label-text"> Another Space</div>
+          <% end -%>
+        </div>
+        <p class="form-label">(*) Mandatory</p>
+
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Help!
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+
+        </aside>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-3 pull-left actions">
+        <%= link_to "Back", previous_wizard_path, class: 'btn btn-primary' %>
+      </div>
+      <div class="col-md-3 pull-right actions">
+        <%= f.submit "Next", class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end -%>
+</div>

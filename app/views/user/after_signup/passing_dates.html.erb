@@ -1,0 +1,51 @@
+<div class="wizard">
+  <%= form_for @user, url: wizard_path, method: :put do |f| %>
+    <legend>Date Information</legend>
+    <div class="row content">
+      <br>
+
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <%= f.fields_for :passings, @passing do |b| %>
+          <div class="form-group">
+            <%= b.label :date_of_birth, "When was #{@passing.first_name} born?", class: 'form-label' %><br />
+            <div class="input-group">
+              <%= b.date_select :date_of_birth, prompt: { day: 'day', month: 'month', year: 'year' }, start_year: 1910, end_year: Date.today.year, class: 'form-control' %>
+            </div>
+          </div>
+          <br />
+          <div class="form-group">
+            <%= b.label :date_of_passing, "When did #{@passing.first_name} pass?", class: 'form-label' %><br />
+            <div class="input-group">
+              <%= b.date_select :date_of_passing, prompt: { day: 'day', month: 'month', year: 'year' }, start_year: 1910, end_year: Date.today.year, class: 'form-control' %>
+            </div>
+          </div>
+          <br />
+        <% end -%>
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Help!
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+
+        </aside>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-3 pull-left actions">
+        <%= link_to "Back", previous_wizard_path, class: 'btn btn-primary' %>
+      </div>
+      <div class="col-md-3 pull-right actions">
+        <%= f.submit "Next", class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end -%>
+</div>

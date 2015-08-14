@@ -1,0 +1,590 @@
+<div id="burial-steps">
+  <h3>Info</h3>
+  <fieldset>
+    <legend><%= @passing.first_name %>'s Information</legend>
+    <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>When would you like to put <%= @passing.first_name %> to rest?</span>
+      </div>
+      <div class="header error col-md-12 col-sm-12 col-xs-12">
+        <span></span>
+      </div>
+      <br>
+      <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+        <%= form_for @burial, remote: true, url: user_burial_update_path, method: :patch do |f| %>
+          <div>
+
+
+            <%= f.hidden_field :id, value: @burial.id %>
+            <br />
+            <%= render partial: 'shared/plan_dates', locals: { f: f } %>
+
+          </div>
+        <% end -%>
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Quick Tips
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </fieldset>
+  <h3>Step 2</h3>
+  <fieldset>
+    <legend>Type of service</legend>
+    <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>Would you like a public service for <%= @passing.first_name %>?</span>
+      </div>
+
+      <br>
+
+
+      <div class="col-md-5 col-sm-5 col-xs-10 col-xs-offset-1">
+        <%= form_for @burial, remote: true, url: user_burial_update_path, method: :patch do |f| %>
+          <%= f.hidden_field :id, value: @burial.id %>
+          <div class= "radios">
+            <%= f.label :public_service, 'Yes', value: true, class: 'yes-no pull-left' %>
+            <%= f.radio_button :public_service, true %>
+
+            <%= f.label :public_service, 'No', value: false, class: 'yes-no pull-right' %>
+            <%= f.radio_button :public_service, false %>
+
+          </div>
+          <br />
+
+        <% end -%>
+
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Quick Tips
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+
+        </aside>
+      </div>
+
+    </div>
+  </fieldset>
+  <h3>Step 3</h3>
+  <fieldset>
+    <legend>Open or Closed Casket</legend>
+    <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>What about an open casket?</span>
+      </div>
+      <br>
+      <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+        <%= form_for @burial, remote: true, url: user_burial_update_path, method: :patch do |f| %>
+         <%= f.hidden_field :id, value: @burial.id %>
+          <div>
+          <label>
+            <%= f.radio_button :open_casket, true %> Yes
+          </label>
+          </div>
+          <br />
+          <div>
+          <label>
+            <%= f.radio_button :open_casket, false %> No
+          </label>
+          </div>
+        <% end -%>
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Quick Tips
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </fieldset>
+  <h3>Step 4</h3>
+  <fieldset>
+    <legend>Private Viewing</legend>
+    <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>Would <%= @passing.first_name %>'s family like to have a private viewing before the service?</span>
+      </div>
+      <br>
+      <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+        <%= form_for @burial, remote: true, url: user_burial_update_path, method: :patch do |f| %>
+          <%= f.hidden_field :id, value: @burial.id %>
+          <div>
+          <label>
+            <%= f.radio_button :private_viewing, true %> Yes
+          </label>
+          </div>
+          <br />
+          <div>
+          <label>
+            <%= f.radio_button :private_viewing, false %> No
+          </label>
+          </div>
+        <% end -%>
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Quick Tips
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </fieldset>
+  <h3>Step 5</h3>
+  <fieldset>
+    <legend>Type of Service</legend>
+    <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>Would <%= @passing.first_name %> like a religious or cultural service?</span>
+      </div>
+      <br>
+      <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+        <%= form_for @burial, remote: true, url: user_burial_update_path, method: :patch do |f| %>
+          <%= f.hidden_field :id, value: @burial.id %>
+          <div>
+          <label>
+            <%= f.radio_button :religious_cultural_service, true %> Yes
+          </label>
+          </div>
+          <br />
+          <div>
+          <label>
+            <%= f.radio_button :religious_cultural_service, false %> No
+          </label>
+          </div>
+        <% end -%>
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Quick Tips
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </fieldset>
+  <h3>Step 6</h3>
+  <fieldset>
+    <legend>Type of religion/culture</legend>
+    <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>Sounds like a nice touch.</span>
+      </div>
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>What type of culture or religion does <%= @passing.first_name %> identify with?</span>
+      </div>
+      <br>
+      <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+        <%= form_for @burial, remote: true, url: user_burial_update_path, method: :patch do |f| %>
+          <%= f.hidden_field :id, value: @burial.id %>
+          <div>
+            <%= f.collection_select :religion_culture_type, Religion.order(:name),:name,:name, include_blank: true, class: 'form-control' %>
+          </div>
+          <br />
+          <div>
+            <%= f.collection_select :religion_culture_type, Culture.order(:name),:name,:name, include_blank: true, class: 'form-control' %>
+          </div>
+        <% end -%>
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Quick Tips
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </fieldset>
+  <h3>Step 7</h3>
+  <fieldset>
+    <legend>Type of Service</legend>
+    <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>Where do you think you'd like to hold the service?</span>
+      </div>
+      <br>
+      <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+        <%= form_for @burial, remote: true, url: user_burial_update_path, method: :patch do |f| %>
+          <%= f.hidden_field :id, value: @burial.id %>
+          <div>
+          <label>
+            <%= f.radio_button :type_of_service_space, 'funeral home' %> Funeral Home
+          </label>
+          </div>
+          <br />
+          <div>
+          <label>
+            <%= f.radio_button :type_of_service_space, 'worship space' %> Worship Space
+          </label>
+          </div>
+          <br />
+          <div>
+          <label>
+            <%= f.radio_button :type_of_service_space, 'burial space' %> Burial Space
+          </label>
+          </div>
+          <br />
+          <div>
+          <label>
+            <%= f.radio_button :type_of_service_space, 'another space' %> Another Space
+          </label>
+          </div>
+        <% end -%>
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Quick Tips
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </fieldset>
+  <h3>Step 8</h3>
+  <fieldset>
+    <legend>Type of Service</legend>
+    <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>Sounds like a nice touch</span>
+      </div>
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>Do you have a worship space in mind</span>
+      </div>
+      <br>
+      <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+        <%= form_for @burial, remote: true, url: user_burial_update_path, method: :patch do |f| %>
+          <%= f.hidden_field :id, value: @burial.id %>
+          <div>
+          <label>
+            <%= f.radio_button :worship_space_in_mind, true %> Yes
+          </label>
+          </div>
+          <br />
+          <div>
+          <label>
+            <%= f.radio_button :worship_space_in_mind, false %> No
+          </label>
+          </div>
+        <% end -%>
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Quick Tips
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </fieldset>
+  <h3>Step 9</h3>
+  <fieldset>
+    <legend>Worship Space</legend>
+    <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>Sounds special.</span>
+      </div>
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>Which worship space are you thinking about?</span>
+      </div>
+      <br>
+      <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+        <%= form_for @burial, remote: true, url: user_burial_update_path, method: :patch do |f| %>
+          <%= f.hidden_field :id, value: @burial.id %>
+          <div>
+            <%= f.collection_select :religion_culture_type, WorshipSpace.order(:name),:name,:name, include_blank: true, class: 'form-control' %>
+          </div>
+        <% end -%>
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Quick Tips
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </fieldset>
+  <h3>Step 10</h3>
+  <fieldset>
+    <legend></legend>
+    <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>No sweat.</span>
+      </div>
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>This is something we can come back to later and help you figure out.</span>
+      </div>
+      <br>
+      <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Quick Tips
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </fieldset>
+  <h3>Step 11</h3>
+  <fieldset>
+    <legend>Worship Space</legend>
+    <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>What's the address?</span>
+      </div>
+      <br>
+      <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+        <%= form_for @burial, remote: true, url: user_burial_update_path, method: :patch do |f| %>
+          <%= f.hidden_field :id, value: @burial.id %>
+
+          <%= f.fields_for :service_space_address do |address| %>
+            <%= render partial: 'shared/address', locals: { f: address } %>
+          <% end -%>
+        <% end -%>
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Quick Tips
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </fieldset>
+  <h3>Step 12</h3>
+  <fieldset>
+    <legend>Burial Space</legend>
+    <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span><em>High 5</em> You're doing a great job! Let's keep moving.</span>
+      </div>
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>Do you have a burial site in mind?</span>
+      </div>
+      <br>
+
+
+      <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+        <%= form_for @burial, remote: true, url: user_burial_update_path, method: :patch do |f| %>
+          <%= f.hidden_field :id, value: @burial.id %>
+          <div>
+          <label>
+            <%= f.radio_button :burial_space_in_mind, true %> Yes
+          </label>
+          </div>
+          <br />
+          <div>
+          <label>
+            <%= f.radio_button :burial_space_in_mind, false %> No
+          </label>
+          </div>
+        <% end -%>
+
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Quick Tips
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+
+        </aside>
+      </div>
+    </div>
+  </fieldset>
+  <h3>Step 13</h3>
+  <fieldset>
+    <legend></legend>
+    <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>No sweat. Most people don't.</span>
+      </div>
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>We can help you plan.</span>
+      </div>
+      <br>
+      <div class="subtext col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
+      <span> Would sort of plan are you thinking? </span>
+      <br/>
+      <hr>
+      <div class="row">
+        <div class="col-xs-5">
+          <button id="get-burial-cemetery" type="button" class="btn btn-primary btn-unrounded btn-block">Cemetery Plan</button>
+        </div>
+        <div class="col-xs-5 col-xs-offset-2">
+          <button id="get-burial-mausoleum" type="button" class="btn btn-primary btn-unrounded btn-block">Mausoleum Plan</button>
+        </div>
+      </div>
+    </div>
+    </div>
+  </fieldset>
+  <h3>Step 14</h3>
+  <fieldset>
+    <legend>Worship Space</legend>
+    <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>What's the address?</span>
+      </div>
+      <br>
+      <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+        <%= form_for @burial, remote: true, url: user_burial_update_path, method: :patch do |f| %>
+          <%= f.hidden_field :id, value: @burial.id %>
+          <%= f.fields_for :burial_space_address do |address| %>
+            <%= render partial: 'shared/address', locals: { f: address } %>
+          <% end -%>
+         <% end -%>
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Quick Tips
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </fieldset>
+  <h3>Step 15</h3>
+  <fieldset>
+    <legend>Worship Space</legend>
+    <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>One last thing</span>
+      </div>
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>Do you own the space?</span>
+      </div>
+      <br>
+      <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+        <%= form_for @burial, remote: true, url: user_burial_update_path, method: :patch do |f|  %>
+          <%= f.hidden_field :id, value: @burial.id %>
+          <div>
+          <label>
+            <%= f.radio_button :burial_space_owned, true %> Yes
+          </label>
+          </div>
+          <br />
+          <div>
+          <label>
+            <%= f.radio_button :burial_space_owned, false %> No
+          </label>
+          </div>
+        <% end -%>
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Quick Tips
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </fieldset>
+  <h3>Step 16</h3>
+  <fieldset>
+  <div id="finish-response">
+  </div>
+  </fieldset>
+</div>

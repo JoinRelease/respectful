@@ -1,0 +1,36 @@
+<% if @success %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 text-center success">
+      <i class="fa fa-4x fa-check"></i>
+      <h2> <%= @message %></h2>
+      <br />
+      <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+  <script>
+    (function() {
+    var _fbq = window._fbq || (window._fbq = []);
+    if (!_fbq.loaded) {
+    var fbds = document.createElement('script');
+    fbds.async = true;
+    fbds.src = '//connect.facebook.net/en_US/fbds.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(fbds, s);
+    _fbq.loaded = true;
+    }
+    })();
+    window._fbq = window._fbq || [];
+    window._fbq.push(['track', '6031701452455', {'value':'0.01','currency':'USD'}]);
+  </script>
+<% else %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 text-center failure">
+      <i class="fa fa-4x fa-times"></i>
+      <h2> <%= @message %></h2>
+      <p>please refresh the page and try again.</p>
+      <br />
+      <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+<% end -%>
+

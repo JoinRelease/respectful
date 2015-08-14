@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module FuneralApp
+module RespectfulApp
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -24,6 +24,7 @@ module FuneralApp
     config.active_record.raise_in_transactional_callbacks = true
 
     config.generators do |g|
+      g.test_framework :rspec
       g.stylesheets false
       g.javascripts false
       g.helper      false

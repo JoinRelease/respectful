@@ -1,0 +1,241 @@
+<div id="mausoleum-plan">
+  <h3>Step 1</h3>
+  <fieldset>
+    <legend>Type of service</legend>
+    <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>Do you prefer an indoor or outdoor mausoleum?</span>
+      </div>
+      <br>
+
+      <div class="col-md-5 col-sm-5 col-xs-10 col-xs-offset-1">
+        <%= form_for @mausoleum_plan, remote: true, url: user_burial_mausoleum_update_path, method: :patch do |f| %>
+          <%= f.hidden_field :id, value: @mausoleum_plan.id %>
+          <div class= "radios">
+            <%= f.label :type_of_mausoleum, 'Indoor', value: 'indoor'  %>
+            <%= f.radio_button :type_of_mausoleum, 'indoor' %>
+
+            <%= f.label :type_of_mausoleum, 'Outdoor', value: 'outdoor' %>
+            <%= f.radio_button :type_of_mausoleum, 'outdoor' %>
+
+            <%= f.label :type_of_mausoleum, 'No Preference', value: 'no preference' %>
+            <%= f.radio_button :type_of_mausoleum, 'no preference' %>
+
+          </div>
+          <br />
+
+        <% end -%>
+
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Quick Tips
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+
+        </aside>
+      </div>
+
+    </div>
+  </fieldset>
+  <h3>Step 2</h3>
+  <fieldset>
+    <legend>Type of service</legend>
+    <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>Would you like <%= @passing.first_name %> to be in a specific section of the mausoleum?</span>
+      </div>
+
+      <br>
+
+
+      <div class="col-md-5 col-sm-5 col-xs-10 col-xs-offset-1">
+        <%= form_for @mausoleum_plan, remote: true, url: user_burial_mausoleum_update_path, method: :patch do |f| %>
+          <%= f.hidden_field :id, value: @mausoleum_plan.id %>
+          <div class= "radios">
+            <%= f.label :mausoleum_section, 'Religious', value: 'religious'  %>
+            <%= f.radio_button :mausoleum_section, 'religious' %>
+
+            <%= f.label :mausoleum_section, 'Cultural', value: 'cultural' %>
+            <%= f.radio_button :mausoleum_section, 'cultural' %>
+
+            <%= f.label :mausoleum_section, 'No', value: 'no' %>
+            <%= f.radio_button :mausoleum_section, 'no' %>
+
+          </div>
+          <br />
+
+        <% end -%>
+
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Quick Tips
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+
+        </aside>
+      </div>
+
+    </div>
+  </fieldset>
+  <h3>Step 3</h3>
+  <fieldset>
+    <legend>Type of service</legend>
+    <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>Where are you thinking?</span>
+      </div>
+
+      <br>
+
+
+      <div class="col-md-5 col-sm-5 col-xs-10 col-xs-offset-1">
+        <%= form_for @mausoleum_plan, remote: true, url: user_burial_mausoleum_update_path, method: :patch do |f| %>
+          <%= f.hidden_field :id, value: @mausoleum_plan.id %>
+          <div class= "radios">
+
+            <%= f.collection_select :mausoleum_section_name, Religion.order(:name),:name,:name, include_blank: true, class: 'form-control' %>
+            <br />
+            <%= f.collection_select :mausoleum_section_name, Culture.order(:name),:name,:name, include_blank: true, class: 'form-control' %>
+
+          </div>
+
+
+        <% end -%>
+
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Quick Tips
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+
+        </aside>
+      </div>
+
+    </div>
+  </fieldset>
+  <h3>Step 4</h3>
+  <fieldset>
+    <legend>Type of service</legend>
+    <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>Do you prefer a high, medium, or low height burial?</span>
+      </div>
+
+      <br>
+
+
+      <div class="col-md-5 col-sm-5 col-xs-10 col-xs-offset-1">
+        <%= form_for @mausoleum_plan, remote: true, url: user_burial_mausoleum_update_path, method: :patch do |f| %>
+          <%= f.hidden_field :id, value: @mausoleum_plan.id %>
+          <div class= "radios">
+            <%= f.label :height, 'Low', value: 'low'  %>
+            <%= f.radio_button :height, 'low' %>
+
+            <%= f.label :height, 'Medium', value: 'medium' %>
+            <%= f.radio_button :height, 'medium' %>
+
+            <%= f.label :height, 'High', value: 'high' %>
+            <%= f.radio_button :height, 'high' %>
+
+            <%= f.label :height, 'No Preference', value: 'no preference' %>
+            <%= f.radio_button :height, 'no preference' %>
+
+          </div>
+          <br />
+
+        <% end -%>
+
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Quick Tips
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+
+        </aside>
+      </div>
+
+    </div>
+  </fieldset>
+  <h3>Step 6</h3>
+  <fieldset>
+    <legend>Type of service</legend>
+    <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>Some couples purchase a double plot at this time to ensure being next to their partner.</span>
+      </div>
+      <br>
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span> Is this something you're interested in?</span>
+      </div>
+
+
+      <div class="col-md-5 col-sm-5 col-xs-10 col-xs-offset-1">
+        <%= form_for @mausoleum_plan, remote: true, url: user_burial_mausoleum_update_path, method: :patch do |f| %>
+          <%= f.hidden_field :id, value: @mausoleum_plan.id %>
+          <div class= "radios">
+            <%= f.label :double_plot, 'Yes', value: 'yes'  %>
+            <%= f.radio_button :double_plot, 'yes' %>
+
+            <%= f.label :double_plot, 'No', value: 'no' %>
+            <%= f.radio_button :double_plot, 'no' %>
+
+            <%= f.label :double_plot, 'Maybe', value: 'maybe' %>
+            <%= f.radio_button :double_plot, 'maybe' %>
+
+          </div>
+          <br />
+
+        <% end -%>
+
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Quick Tips
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+
+        </aside>
+      </div>
+
+    </div>
+  </fieldset>
+</div>

@@ -9,9 +9,6 @@ $facebook-blue-active: #7389c6;
 $instagram-black: #353535;
 $youtube-red: #cd181f;
 $concrete: #d9d9d9;
-$grit-red: #ef414a;
-$grit-red-active: #f15960;
-
 
 // Bootstrap variable overrides
 $font-family-sans-serif: Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -23,3 +20,6 @@ $navbar-inverse-link-color: #8b8c91;
 $container-lg: 970px;
 // already have in bootstrap, but it's deprecated
 $screen-xs-min: 480px !default;
+
+$theme-primary: #F05F40;
+$theme-dark: #222;

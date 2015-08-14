@@ -1,0 +1,233 @@
+$('#passing-plan').html("<%= j render('form', locals: { user: @user, passing: @passing, burial: @burial } ) %>");
+
+var wizard = $("#burial-steps").steps({
+  headerTag: "h3",
+  bodyTag: "fieldset",
+  transitionEffect: "fade",
+  saveState: true,
+  enableFinishButton: false,
+  enableAllSteps: true,
+  titleTemplate: '<span class="number hidden">#index#. #title#</span> ',
+  onStepChanging: function (event, currentIndex, newIndex)
+  {
+    var form = $('#passing-plan  .current  form').show();
+    // Allways allow previous action even if the current form is not valid!
+    if (currentIndex > newIndex)
+    {
+        $(" .error span").empty();
+        return true;
+    }
+    // Needed in some cases if the user went back (clean up)
+    if (currentIndex < newIndex)
+    {
+
+    }
+
+    if (currentIndex === 9 || currentIndex === 12)
+    {
+      return true;
+    }
+    form.validate({       // initialize plugin on each form
+      errorPlacement: function errorPlacement(error, element) { $('.current .error span').html(error); },
+        rules: {
+
+        }
+      }).settings.ignore = ":disabled,:hidden";
+    //form.validate();
+    if (form.valid())
+    {
+
+      form.submit();
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+
+
+
+  },
+   onStepChanged: function (event, currentIndex, priorIndex)
+  {
+    if (currentIndex === 12 )
+    {
+      $('.actions').hide();
+    }
+    if (currentIndex > priorIndex)
+    {
+      if (currentIndex === 2)
+      {
+        var yes = $('#burial_plan_public_service_true');
+        var no = $('#burial_plan_public_service_false');
+        if (no.is(':checked'))
+        {
+          $(this).steps("setStep", 11);
+
+        }
+      }
+      if (currentIndex === 5)
+      {
+        var yes = $('#burial_plan_religious_cultural_service_true');
+        var no = $('#burial_plan_religious_cultural_service_false');
+        if (no.is(':checked'))
+        {
+          $(this).steps("setStep", 6);
+
+        }
+      }
+      if (currentIndex === 7)
+      {
+        var space = $('#burial_plan_type_of_service_space_worship_space');
+        if (!space.is(':checked'))
+        {
+          $(this).steps("setStep", 10);
+
+        }
+      }
+      if (currentIndex === 8)
+      {
+        var yes = $('#burial_plan_worship_space_in_mind_true');
+        var no = $('#burial_plan_worship_space_in_mind_false');
+        if (no.is(':checked'))
+        {
+          $(this).steps("setStep", 9);
+
+        }
+      }
+      if (currentIndex === 9)
+      {
+        var yes = $('#burial_plan_worship_space_in_mind_true');
+        var no = $('#burial_plan_worship_space_in_mind_false');
+        if (yes.is(':checked'))
+        {
+          $(this).steps("setStep", 11);
+
+        }
+      }
+      if (currentIndex === 10)
+      {
+        var space = $('#burial_plan_type_of_service_space_worship_space');
+        if (space.is(':checked'))
+        {
+          $(this).steps("setStep", 11);
+
+        }
+      }
+      if (currentIndex === 12)
+      {
+        var yes = $('#burial_plan_burial_space_in_mind_true');
+        var no = $('#burial_plan_burial_space_in_mind_false');
+        if (yes.is(':checked'))
+        {
+          $(this).steps("setStep", 13);
+
+        }
+      }
+      if (currentIndex === 13)
+      {
+        var yes = $('#burial_plan_burial_space_in_mind_true');
+        var no = $('#burial_plan_burial_space_in_mind_false');
+        if (no.is(':checked'))
+        {
+          $(this).steps("setStep", 14);
+
+        }
+      }
+
+    }
+
+    if (priorIndex > currentIndex)
+    {
+      if (currentIndex === 10)
+      {
+        var yes = $('#burial_plan_public_service_true');
+        var no = $('#burial_plan_public_service_false');
+        if (no.is(':checked'))
+        {
+          $(this).steps("setStep", 1);
+
+        }
+      }
+      if (currentIndex === 5)
+      {
+        var yes = $('#burial_plan_religious_cultural_service_true');
+        var no = $('#burial_plan_religious_cultural_service_false');
+        if (no.is(':checked'))
+        {
+          $(this).steps("setStep", 4);
+
+        }
+      }
+      if (currentIndex === 8)
+      {
+        var yes = $('#burial_plan_worship_space_in_mind_true');
+        var no = $('#burial_plan_worship_space_in_mind_false');
+        if (no.is(':checked'))
+        {
+          $(this).steps("setStep", 7);
+
+        }
+      }
+      if (currentIndex === 9)
+      {
+        var space = $('#burial_plan_type_of_service_space_worship_space');
+        if (!space.is(':checked'))
+        {
+          $(this).steps("setStep", 6);
+        }
+      }
+
+      if (currentIndex === 10)
+      {
+        var yes = $('#burial_plan_worship_space_in_mind_true');
+        var no = $('#burial_plan_worship_space_in_mind_false');
+        if (yes.is(':checked'))
+        {
+          $(this).steps("setStep", 8);
+
+        }
+        else if (no.is(':checked'))
+        {
+          $(this).steps("setStep", 9);
+        }
+      }
+      if (currentIndex === 12)
+      {
+        var yes = $('#burial_plan_burial_space_in_mind_true');
+        var no = $('#burial_plan_burial_space_in_mind_false');
+        if (yes.is(':checked'))
+        {
+          $(this).steps("setStep", 11);
+
+        }
+      }
+      if (currentIndex === 13)
+      {
+        var yes = $('#burial_plan_burial_space_in_mind_true');
+        var no = $('#burial_plan_burial_space_in_mind_false');
+        if (no.is(':checked'))
+        {
+          $(this).steps("setStep", 12);
+
+        }
+      }
+
+    }
+  }
+
+});
+
+$('.radios input:radio').addClass('input_hidden');
+$('.radios .yes-no').click(function() {
+    $(this).addClass('radio-selected').siblings().removeClass('radio-selected');
+
+});
+
+$('#get-burial-cemetery').click(function() { // bind click event to link
+  $.get('<%= user_burial_cemetery_new_path %>');
+});
+$('#get-burial-mausoleum').click(function() { // bind click event to link
+  $.get('<%= user_burial_mausoleum_new_path %>');
+});
+

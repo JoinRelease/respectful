@@ -8,8 +8,6 @@ class CreatePassings < ActiveRecord::Migration
       t.date :date_of_birth
       t.date :date_of_passing
       t.string :location_of_passing
-      t.string :address_of_passing
-
 
       t.timestamps null: false
     end

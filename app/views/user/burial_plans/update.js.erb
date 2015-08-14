@@ -1,0 +1,6 @@
+<% if @burial.burial_space_owned %>
+  $('#finish-response').html("<%= j render('update_1').html_safe %>");
+<% else %>
+  $('#finish-response').html("<%= j render('update_2').html_safe %>");
+<% end %>
+

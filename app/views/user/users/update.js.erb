@@ -1,0 +1,10 @@
+$('#update-response').html("<%= j render('update').html_safe %>");
+// $('user-registration-form').steps("add", {
+  //   title: "Finished!",
+  //   content: "This is a test"
+  // })
+$('#get-started').click(function() { // bind click event to link
+  $.get('<%= user_plan_new_path %>');
+  $("#user-tabs").tabs("option", "active", 1 );
+});
+

@@ -1,41 +1,103 @@
-
-.wizard
+button
 {
+  a
+  {
+    color: #FFFFFF;
+    &:hover
+    {
+      color: #FFFFFF;
+    }
+  }
+}
 
+.radios
+  {
+    display: inline-block;
+
+    .input-hidden {
+      display:none;
+    }
+
+    input[type="radio"]:checked + label {
+        background-color: #2184be;
+        color: #FFFFFF
+    }
+
+   label {
+      text-align: center;
+      height: 120px;
+      width: 120px;
+      position: relative;
+      color: rgba(0,0,0,0.44);
+      margin-left: 8px;
+      margin-right: 8px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 8px 0 rgba(81,81,81,0.15);
+      padding: 20px;
+      cursor: pointer;
+      //overflow: hidden;
+      border: 1px solid #c7c7c7;
+      //outline: 1px solid;
+  }
+
+
+
+   label img {
+      padding: 3px;
+
+  }
+}
+
+.header
+{
+  color: #0079D1;
+  font-size: 24px;
+  margin-bottom: 12px;
+  text-align: center;
+
+}
+.subtext
+{
+  text-align: center;
+}
+
+
+#passing-plan
+{
   .steps
   {
-
+    display: none;
+  }
+  .actions
+  {
     ul
     {
       li
       {
-        width: 16.667%;
+        width: 200px;
+        height: 200px;
+        text-align: center;
+        font-size: 20px;
+        @media screen and (max-width: $screen-sm-max)
+        {
+          width: 120px;
+          height: 120px;
+        }
       }
     }
-    @media screen and (max-width: $screen-sm-min) {
-      visibility: hidden;
-      position: absolute;
-      top: -9999px;
-    }
   }
+}
+
+.wizard
+{
+
   .content
   {
-    overflow-y: auto;
-    height: auto;
     background-color: #FFFFFF;
     font-size: 16px;
-    .header
-    {
-      color: #0079D1;
-      font-size: 34px;
-      margin-bottom: 20px;
-      text-align: center;
+    overflow: auto;
+    height: auto;
 
-    }
-    .subtext
-    {
-      text-align: center;
-    }
     .form-label
     {
       color: #A9A9A9;
@@ -48,14 +110,8 @@
       color: #000000;
       line-height: 24px;
       outline-color: #000000;
-      width: 310px;
 
 
-      @media screen and (max-width: $screen-md-min) and (min-width: $screen-sm-min)
-      {
-        width: 210%
-
-      }
       @media screen and (min-width: $screen-sm-min)
       {
          margin-top: 20px;
@@ -116,9 +172,23 @@
         *overflow: hidden;
       }
     }
-    .spouse-icon
+  }
+
+  .actions
+  {
+    .btn
     {
-      content: "\E608";
+      width: 200px;
+      height: 75px;
+      text-align: center;
+      display: table-cell;
+      vertical-align: middle;
+      font-size: 20px;
+      @media screen and (max-width: $screen-sm-max)
+      {
+        width: 120px;
+        height: 48px;
+      }
     }
   }
 
