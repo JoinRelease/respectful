@@ -1,0 +1,292 @@
+<div id="cemetery-plan">
+  <h3>Step 1</h3>
+  <fieldset>
+    <legend>Type of service</legend>
+    <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>Would you like <%= @passing.first_name %> to be in a specific section of the cemetery?</span>
+      </div>
+
+      <br>
+
+
+      <div class="col-md-5 col-sm-5 col-xs-10 col-xs-offset-1">
+        <%= form_for @cemetery_plan, remote: true, url: user_burial_cemetery_update_path, method: :patch do |f| %>
+          <%= f.hidden_field :id, value: @cemetery_plan.id %>
+          <div class= "radios">
+            <%= f.label :cemetery_section, 'Religious', value: 'religious'  %>
+            <%= f.radio_button :cemetery_section, 'religious' %>
+
+            <%= f.label :cemetery_section, 'Cultural', value: 'cultural' %>
+            <%= f.radio_button :cemetery_section, 'cultural' %>
+
+            <%= f.label :cemetery_section, 'No', value: 'no' %>
+            <%= f.radio_button :cemetery_section, 'no' %>
+
+          </div>
+          <br />
+
+        <% end -%>
+
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Quick Tips
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+
+        </aside>
+      </div>
+
+    </div>
+  </fieldset>
+  <h3>Step 2</h3>
+  <fieldset>
+    <legend>Type of service</legend>
+    <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>Where are you thinking?</span>
+      </div>
+
+      <br>
+
+
+      <div class="col-md-5 col-sm-5 col-xs-10 col-xs-offset-1">
+        <%= form_for @cemetery_plan, remote: true, url: user_burial_cemetery_update_path, method: :patch do |f| %>
+          <%= f.hidden_field :id, value: @cemetery_plan.id %>
+          <div class= "radios">
+
+            <%= f.collection_select :cemetery_section_name, Religion.order(:name),:name,:name, include_blank: true, class: 'form-control' %>
+            <br />
+            <%= f.collection_select :cemetery_section_name, Culture.order(:name),:name,:name, include_blank: true, class: 'form-control' %>
+
+          </div>
+
+
+        <% end -%>
+
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Quick Tips
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+
+        </aside>
+      </div>
+
+    </div>
+  </fieldset>
+  <h3>Step 3</h3>
+  <fieldset>
+    <legend>Type of service</legend>
+    <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>Cemeteries require a liner or vault to prevent the plot from sinking down ...</span>
+      </div>
+      <br>
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>Do you think you'll want a liner or vault?</span>
+      </div>
+
+
+      <div class="col-md-5 col-sm-5 col-xs-10 col-xs-offset-1">
+        <%= form_for @cemetery_plan, remote: true, url: user_burial_cemetery_update_path, method: :patch do |f| %>
+          <%= f.hidden_field :id, value: @cemetery_plan.id %>
+          <div class= "radios">
+            <%= f.label :liner_vault_preference, 'Liner', value: 'liner'  %>
+            <%= f.radio_button :liner_vault_preference, 'liner' %>
+
+            <%= f.label :liner_vault_preference, 'Vault', value: 'vault' %>
+            <%= f.radio_button :liner_vault_preference, 'vault' %>
+
+            <%= f.label :liner_vault_preference, 'No Preference', value: 'no preference' %>
+            <%= f.radio_button :liner_vault_preference, 'no preference' %>
+
+          </div>
+          <br />
+
+        <% end -%>
+
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Quick Tips
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+
+        </aside>
+      </div>
+
+    </div>
+  </fieldset>
+  <h3>Step 4</h3>
+  <fieldset>
+    <legend>Type of service</legend>
+    <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>Do you think you'll prefer a flat or upright headstone?</span>
+      </div>
+      <br>
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span></span>
+      </div>
+
+
+      <div class="col-md-5 col-sm-5 col-xs-10 col-xs-offset-1">
+        <%= form_for @cemetery_plan, remote: true, url: user_burial_cemetery_update_path, method: :patch do |f| %>
+          <%= f.hidden_field :id, value: @cemetery_plan.id %>
+          <div class= "radios">
+            <%= f.label :headstone_preference, 'Flat', value: 'flat'  %>
+            <%= f.radio_button :headstone_preference, 'flat' %>
+
+            <%= f.label :headstone_preference, 'Upright', value: 'upright' %>
+            <%= f.radio_button :headstone_preference, 'upright' %>
+
+            <%= f.label :headstone_preference, 'No Preference', value: 'no preference' %>
+            <%= f.radio_button :headstone_preference, 'no preference' %>
+
+          </div>
+          <br />
+
+        <% end -%>
+
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Quick Tips
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+
+        </aside>
+      </div>
+
+    </div>
+  </fieldset>
+  <h3>Step 5</h3>
+  <fieldset>
+    <legend>Type of service</legend>
+    <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>Some couples purchase a double plot at this time to ensure being next to their partner.</span>
+      </div>
+      <br>
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span> Is this something you're interested in?</span>
+      </div>
+
+
+      <div class="col-md-5 col-sm-5 col-xs-10 col-xs-offset-1">
+        <%= form_for @cemetery_plan, remote: true, url: user_burial_cemetery_update_path, method: :patch do |f| %>
+          <%= f.hidden_field :id, value: @cemetery_plan.id %>
+          <div class= "radios">
+            <%= f.label :double_plot, 'Yes', value: 'yes'  %>
+            <%= f.radio_button :double_plot, 'yes' %>
+
+            <%= f.label :double_plot, 'No', value: 'no' %>
+            <%= f.radio_button :double_plot, 'no' %>
+
+            <%= f.label :double_plot, 'Maybe', value: 'maybe' %>
+            <%= f.radio_button :double_plot, 'maybe' %>
+
+          </div>
+          <br />
+
+        <% end -%>
+
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Quick Tips
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+
+        </aside>
+      </div>
+
+    </div>
+  </fieldset>
+  <h3>Step 6</h3>
+  <fieldset>
+    <legend>Type of service</legend>
+    <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>There are two types of plots.</span>
+      </div>
+      <br>
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>Which one do you think you'd like?</span>
+      </div>
+
+
+      <div class="col-md-5 col-sm-5 col-xs-10 col-xs-offset-1">
+        <%= form_for @cemetery_plan, remote: true, url: user_burial_cemetery_update_path, method: :patch do |f| %>
+          <%= f.hidden_field :id, value: @cemetery_plan.id %>
+          <div class= "radios">
+            <%= f.label :type_of_plot, 'Side-By-Side', value: 'side-by-side'  %>
+            <%= f.radio_button :type_of_double_plot, 'side-by-side' %>
+
+            <%= f.label :type_of_plot, 'Double-Depth', value: 'double-depth' %>
+            <%= f.radio_button :type_of_double_plot, 'double-depth' %>
+
+          </div>
+          <br />
+
+        <% end -%>
+
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Quick Tips
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+
+        </aside>
+      </div>
+
+    </div>
+  </fieldset>
+
+</div>

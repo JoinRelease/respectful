@@ -17,7 +17,7 @@ $( document ).on('ready page:load page:change page:partial-load', function(event
   // if($("#user-tabs") && document.location.hash){
   //   $.scrollTo("#user-tabs");
   // }
-  $.get( "/users/registration" );
+  $.get( "/user/registration" );
 
 
 

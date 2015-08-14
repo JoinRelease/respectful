@@ -1,0 +1,48 @@
+<%= f.fields_for :plan_dates do |d| %>
+  <%= d.label :date do %>
+    <div class="form-label"> Today </div>
+  <% end -%>
+  <%= d.check_box :date, {include_hidden: false}, Date.today %>
+<% end -%>
+<%= f.fields_for :plan_dates do |d| %>
+  <%= d.label :date do %>
+    <div class="form-label"> Tomorrow </div>
+  <% end -%>
+  <%= d.check_box :date, {include_hidden: false}, Date.tomorrow %>
+<% end -%>
+<%= f.fields_for :plan_dates do |d| %>
+  <%= d.label :date do %>
+    <div class="form-label"> 2 days from now </div>
+  <% end -%>
+  <%= d.check_box :date, {include_hidden: false}, Date.today + 2.day %>
+<% end -%>
+<%= f.fields_for :plan_dates do |d| %>
+  <%= d.label :date do %>
+    <div class="form-label"> 3 days from now </div>
+  <% end -%>
+  <%= d.check_box :date, {include_hidden: false}, Date.today + 3.day %>
+<% end -%>
+<%= f.fields_for :plan_dates do |d| %>
+  <%= d.label :date do %>
+    <div class="form-label"> 4 days from now </div>
+  <% end -%>
+  <%= d.check_box :date, {include_hidden: false}, Date.today + 4.day %>
+<% end -%>
+<%= f.fields_for :plan_dates do |d| %>
+  <%= d.label :date do %>
+    <div class="form-label"> 5 days from now </div>
+  <% end -%>
+  <%= d.check_box :date, {include_hidden: false}, Date.today + 5.day %>
+<% end -%>
+<%= f.fields_for :plan_dates do |d| %>
+  <%= d.label :date do %>
+    <div class="form-label"> 6 days from now </div>
+  <% end -%>
+  <%= d.check_box :date, {include_hidden: false}, Date.today + 6.day %>
+<% end -%>
+<%= f.fields_for :plan_dates do |d| %>
+  <%= d.label :date do %>
+    <div class="form-label"> 1 week from now </div>
+  <% end -%>
+  <%= d.check_box :date, {include_hidden: false}, Date.today + 7.day %>
+<% end -%>

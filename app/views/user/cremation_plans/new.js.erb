@@ -1,0 +1,304 @@
+$('#passing-plan').html("<%= j render('form', locals: { user: @user, passing: @passing, cremation: @cremation } ) %>");
+
+var wizard = $("#cremation-steps").steps({
+  headerTag: "h3",
+  bodyTag: "fieldset",
+  transitionEffect: "fade",
+  saveState: true,
+  enableFinishButton: false,
+  enableAllSteps: true,
+  titleTemplate: '<span class="number hidden">#index#. #title#</span> ',
+  onStepChanging: function (event, currentIndex, newIndex)
+  {
+    var form = $('#passing-plan  .current  form').show();
+    // Allways allow previous action even if the current form is not valid!
+    if (currentIndex > newIndex)
+    {
+        $(" .error span").empty();
+        return true;
+    }
+    // Needed in some cases if the user went back (clean up)
+    if (currentIndex < newIndex)
+    {
+
+      // To remove error styles
+
+      //form.find(".body:eq(" + newIndex + ") .error").removeClass("error");
+    }
+
+    if (currentIndex === 9 || currentIndex === 14 || currentIndex === 17)
+    {
+      return true;
+    }
+    form.validate({       // initialize plugin on each form
+      errorPlacement: function errorPlacement(error, element) { $('.current .error span').html(error); },
+        rules: {
+
+        }
+      }).settings.ignore = ":disabled,:hidden";
+    //form.validate();
+    if (form.valid())
+    {
+
+      form.submit();
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+
+
+
+  },
+   onStepChanged: function (event, currentIndex, priorIndex)
+  {
+
+    if (currentIndex === 14 || currentIndex === 20 )
+    {
+      $('.actions').hide();
+    }
+
+    if (currentIndex > priorIndex)
+    {
+      if (currentIndex === 2)
+      {
+        var yes = $('#cremation_plan_public_service_true');
+        var no = $('#cremation_plan_public_service_false');
+        if (no.is(':checked'))
+        {
+          $(this).steps("setStep", 11);
+
+        }
+      }
+      if (currentIndex === 5)
+      {
+        var yes = $('#cremation_plan_religious_cultural_service_true');
+        var no = $('#cremation_plan_religious_cultural_service_false');
+        if (no.is(':checked'))
+        {
+          $(this).steps("setStep", 6);
+
+        }
+      }
+      if (currentIndex === 7)
+      {
+        var space = $('#cremation_plan_type_of_service_space_worship_space');
+        if (!space.is(':checked'))
+        {
+          $(this).steps("setStep", 10);
+
+        }
+      }
+      if (currentIndex === 8)
+      {
+        var yes = $('#cremation_plan_worship_space_in_mind_true');
+        var no = $('#cremation_plan_worship_space_in_mind_false');
+        if (no.is(':checked'))
+        {
+          $(this).steps("setStep", 9);
+
+        }
+      }
+      if (currentIndex === 9)
+      {
+        var yes = $('#cremation_plan_worship_space_in_mind_true');
+        var no = $('#cremation_plan_worship_space_in_mind_false');
+        if (yes.is(':checked'))
+        {
+          $(this).steps("setStep", 11);
+
+        }
+      }
+      if (currentIndex === 10)
+      {
+        var space = $('#cremation_plan_type_of_service_space_worship_space');
+        if (space.is(':checked'))
+        {
+          $(this).steps("setStep", 11);
+
+        }
+      }
+      if (currentIndex === 13)
+      {
+        var cemetery = $('#cremation_plan_place_of_ash_storage_cemetery');
+        var mausoleum = $('#cremation_plan_place_of_ash_storage_mausoleum');
+        if (!cemetery.is(':checked') && !mausoleum.is(':checked'))
+        {
+          $(this).steps("setStep", 17);
+
+        }
+      }
+      if (currentIndex === 14)
+      {
+        var yes = $('#cremation_plan_ash_storage_space_in_mind_true');
+        var no = $('#cremation_plan_ash_storage_space_in_mind_false');
+        if (yes.is(':checked'))
+        {
+          $(this).steps("setStep", 15);
+
+        }
+      }
+
+      if (currentIndex === 17)
+      {
+        var yes = $('#cremation_plan_ash_storage_space_owned_true');
+        var no = $('#cremation_plan_ash_storage_space_owned_false');
+        if (no.is(':checked'))
+        {
+          $(this).steps("setStep", 14);
+
+        }
+      }
+      if (currentIndex === 19)
+      {
+        var pickup = $('#cremation_plan_ash_transit_type_pickup');
+        if (pickup.is(':checked'))
+        {
+          $(this).steps("setStep", 20);
+
+        }
+      }
+
+      // if (currentIndex === 12)
+      // {
+      //   var yes = $('#burial_plan_burial_space_in_mind_true');
+      //   var no = $('#burial_plan_burial_space_in_mind_false');
+      //   if (yes.is(':checked'))
+      //   {
+      //     $(this).steps("setStep", 13);
+
+      //   }
+      // }
+      // if (currentIndex === 13)
+      // {
+      //   var yes = $('#burial_plan_burial_space_in_mind_true');
+      //   var no = $('#burial_plan_burial_space_in_mind_false');
+      //   if (no.is(':checked'))
+      //   {
+      //     $(this).steps("setStep", 14);
+
+      //   }
+      // }
+
+    }
+
+    if (priorIndex > currentIndex)
+    {
+      if (currentIndex === 10)
+      {
+        var yes = $('#cremation_plan_public_service_true');
+        var no = $('#cremation_plan_public_service_false');
+        if (no.is(':checked'))
+        {
+          $(this).steps("setStep", 1);
+
+        }
+      }
+      if (currentIndex === 5)
+      {
+        var yes = $('#cremation_plan_religious_cultural_service_true');
+        var no = $('#cremation_plan_religious_cultural_service_false');
+        if (no.is(':checked'))
+        {
+          $(this).steps("setStep", 4);
+
+        }
+      }
+      if (currentIndex === 9)
+      {
+        var space = $('#cremation_plan_type_of_service_space_worship_space');
+        if (!space.is(':checked'))
+        {
+          $(this).steps("setStep", 6);
+        }
+      }
+      if (currentIndex === 8)
+      {
+        var yes = $('#cremation_plan_worship_space_in_mind_true');
+        var no = $('#cremation_plan_worship_space_in_mind_false');
+        if (no.is(':checked'))
+        {
+          $(this).steps("setStep", 7);
+
+        }
+      }
+
+
+      if (currentIndex === 10)
+      {
+        var yes = $('#cremation_plan_worship_space_in_mind_true');
+        var no = $('#cremation_plan_worship_space_in_mind_false');
+        if (yes.is(':checked'))
+        {
+          $(this).steps("setStep", 8);
+
+        }
+        else if (no.is(':checked'))
+        {
+          $(this).steps("setStep", 9);
+        }
+      }
+
+      if (currentIndex === 16)
+      {
+        var cemetery = $('#cremation_plan_place_of_ash_storage_cemetery');
+        var mausoleum = $('#cremation_plan_place_of_ash_storage_mausoleum');
+        if (!cemetery.is(':checked') && !mausoleum.is(':checked'))
+        {
+          $(this).steps("setStep", 12);
+
+        }
+      }
+      if (currentIndex === 14)
+      {
+        var yes = $('#cremation_plan_ash_storage_space_in_mind_true');
+        var notowned = $('#cremation_plan_ash_storage_space_owned_false');
+        if (yes.is(':checked') && !notowned.is(':checked'))
+        {
+          $(this).steps("setStep", 13);
+
+        }
+      }
+      if (currentIndex === 19)
+      {
+        var pickup = $('#cremation_plan_ash_transit_type_pickup');
+        if (pickup.is(':checked'))
+        {
+          $(this).steps("setStep", 20);
+
+        }
+      }
+    //   if (currentIndex === 12)
+    //   {
+    //     var yes = $('#burial_plan_burial_space_in_mind_true');
+    //     var no = $('#burial_plan_burial_space_in_mind_false');
+    //     if (yes.is(':checked'))
+    //     {
+    //       $(this).steps("setStep", 11);
+
+    //     }
+    //   }
+    //   if (currentIndex === 13)
+    //   {
+    //     var yes = $('#burial_plan_burial_space_in_mind_true');
+    //     var no = $('#burial_plan_burial_space_in_mind_false');
+    //     if (no.is(':checked'))
+    //     {
+    //       $(this).steps("setStep", 12);
+
+    //     }
+    //   }
+
+    }
+  }
+
+});
+
+$('.radios input:radio').addClass('input_hidden');
+$('.radios .yes-no').click(function() {
+    $(this).addClass('radio-selected').siblings().removeClass('radio-selected');
+
+});
+
+

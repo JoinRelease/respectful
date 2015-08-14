@@ -1,0 +1,66 @@
+$('#passing-plan').html("<%= j render('form', locals: { user: @user, passing: @passing, burial: @burial, cemetery_plan: @cemetery_plan } ) %>");
+var wizard = $("#cemetery-plan").steps({
+  headerTag: "h3",
+  bodyTag: "fieldset",
+  transitionEffect: "fade",
+  saveState: true,
+  enableFinishButton: false,
+  enableAllSteps: true,
+  titleTemplate: '<span class="number hidden">#index#. #title#</span> ',
+  onStepChanging: function (event, currentIndex, newIndex)
+  {
+    var form = $('#passing-plan  .current  form').show();
+    // Allways allow previous action even if the current form is not valid!
+    if (currentIndex > newIndex)
+    {
+        $(" .error span").empty();
+        return true;
+    }
+    // Needed in some cases if the user went back (clean up)
+    if (currentIndex < newIndex)
+    {
+
+    }
+
+    form.validate({       // initialize plugin on each form
+      errorPlacement: function errorPlacement(error, element) { $('.current .error span').html(error); },
+        rules: {
+
+        }
+      }).settings.ignore = ":disabled,:hidden";
+    //form.validate();
+    if (form.valid())
+    {
+
+      form.submit();
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+
+
+
+  },
+   onStepChanged: function (event, currentIndex, priorIndex)
+  {
+
+    if (currentIndex > priorIndex)
+    {
+
+    }
+
+    if (priorIndex > currentIndex)
+    {
+
+    }
+  }
+
+});
+
+$('.radios input:radio').addClass('input_hidden');
+$('.radios label').click(function() {
+    $(this).addClass('radio-selected').siblings().removeClass('radio-selected');
+
+});

@@ -15,10 +15,10 @@
 //= require jquery-ujs
 //= require jquery-ui
 //= require jquery-cookie
-//= require jquery-steps
 //= require jquery-validate
 //= require moment
 //= require eonasdan-bootstrap-datetimepicker
 //= require summernote
 //= require select2
+//= require jquery-pjax
 //= require_tree .

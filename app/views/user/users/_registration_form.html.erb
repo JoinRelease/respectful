@@ -1,0 +1,257 @@
+<%= form_for @user, remote: true, url: user_registration_update_path, html: {id: "user-registration-form", method: :patch } do |f| %>
+  <h3>Info</h3>
+  <fieldset>
+    <legend>Profile Information</legend>
+    <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>Let's get started by getting to know you.</span>
+      </div>
+      <div class="error col-md-12 col-sm-12 col-xs-12">
+        <span></span>
+      </div>
+
+      <br>
+
+      <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+        <%= f.label :first_name, 'First Name *', class: 'form-label' %><br />
+        <%= f.text_field :first_name, class: 'form-control required' %>
+        <br>
+        <%= f.label :last_name, 'Last Name *', class: 'form-label' %><br />
+        <%= f.text_field :last_name, class: 'form-control required' %>
+        <br>
+        <%= f.label :phone_number, 'Phone Number *', class: 'form-label' %><br />
+        <%= f.text_field :phone_number, class: 'form-control required number' %>
+        <br>
+
+        <p class="form-label">(*) Mandatory</p>
+
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Help!
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+
+        </aside>
+      </div>
+
+    </div>
+  </fieldset>
+
+  <h3>Name</h3>
+  <fieldset>
+    <legend>Loved one's name</legend>
+    <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>What's the name of the loved one you're planning for?</span>
+      </div>
+
+      <br>
+
+      <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+        <%= f.fields_for :passings, @passing do |b| %>
+          <%= b.label :first_name, 'First Name *', class: 'form-label' %><br />
+          <%= b.text_field :first_name, id: 'passing_name', class: 'form-control required'%>
+          <br>
+          <%= b.label :last_name, 'Last Name *', class: 'form-label' %><br />
+          <%= b.text_field :last_name, class: 'form-control required' %>
+          <br>
+
+        <p class="form-label">(*) Mandatory</p>
+
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Help!
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+
+        </aside>
+      </div>
+
+    </div>
+  </fieldset>
+
+
+  <h3>Relation</h3>
+  <fieldset>
+    <legend>Relation to Loved On</legend>
+    <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>We're sorry to head about <span class="loved-one-name"></span>'s passing.</span>
+      </div>
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>How were you related?</span>
+      </div>
+
+      <br>
+
+      <div class="radios col-md-6 col-sm-6 col-xs-12">
+        <div class="center-block">
+        <%= b.label :relation, value: 'spouse/partner', class: '' do %>
+          <div class="label-text"> Spouse/Partner </div>
+        <% end -%>
+        <%= b.radio_button :relation, 'spouse/partner' %>
+
+        <%= b.label :relation, value: 'child', class: '' do %>
+          <div class="label-text"> Child </div>
+        <% end -%>
+        <%= b.radio_button :relation, 'child' %>
+
+        <%= b.label :relation, value: 'sibling', class: '' do %>
+          <div class="label-text"> Sibling</div>
+        <% end -%>
+        <%= b.radio_button :relation, 'sibling' %>
+
+        <%= b.label :relation, value: 'parent', class: '' do %>
+          <div class="label-text"> Parent </div>
+        <% end -%>
+        <%= b.radio_button :relation, 'parent' %>
+
+        <%= b.label :relation, value: 'other family', class: '' do %>
+          <div class="label-text"> Other Family </div>
+        <% end -%>
+        <%= b.radio_button :relation, 'other family' %>
+
+        <%= b.label :relation, value: 'other', class: '' do %>
+          <div class="label-text"> Other </div>
+        <% end -%>
+        <%= b.radio_button :relation, 'other' %>
+      </div>
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Help!
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+
+        </aside>
+      </div>
+
+    </div>
+  </fieldset>
+  <h3>Dates</h3>
+    <fieldset>
+      <legend>Date Information</legend>
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+
+          <div class="form-group">
+            <%= b.label :date_of_birth, 'When was <span class="loved-one-name"/></span> born?'.html_safe, class: 'form-label' %><br />
+            <div class="input-group">
+              <%= b.date_select :date_of_birth, prompt: { day: 'day', month: 'month', year: 'year' }, start_year: 1910, end_year: Date.today.year %>
+            </div>
+          </div>
+          <br />
+          <div class="form-group">
+            <%= b.label :date_of_passing, 'When did <span class="loved-one-name"></span> pass?'.html_safe, class: 'form-label' %><br />
+            <div class="input-group">
+              <%= b.text_field :date_of_passing, class: 'form-control datetimepicker' %>
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+          </div>
+          <br />
+        </div>
+        <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+          <aside class="frame">
+            <ul>
+              <li class="frame-head">
+                <div class="center">
+                  Help!
+                </div>
+              </li>
+              <li class="disc-item">
+                we hope to help you in whichever way we can
+              </li>
+            </ul>
+
+          </aside>
+        </div>
+
+      </div>
+    </fieldset>
+  <h3>Location</h3>
+    <fieldset>
+      <legend><span class="loved-one-name"/></span>'s Location</legend>
+
+      <div class="row">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>And currently where is <span class="loved-one-name"></span> ?</span>
+      </div>
+
+      <br>
+
+      <div class="col-md-6 col-sm-6 col-xs-12 text-left btn-group", data-toggle: "buttons">
+
+        <div>
+        <label>
+          <%= b.radio_button :location_of_passing, 'Hospital' %> Hospital
+        </label>
+        </div>
+        <br />
+        <div>
+        <label>
+          <%= b.radio_button :location_of_passing, 'Home' %> Home
+        </label>
+        </div>
+        <br />
+        <div>
+        <label>
+          <%= b.radio_button :location_of_passing, 'Hospice' %> Hospice
+        </label>
+        </div>
+        <br />
+        <div>
+        <label>
+          <%= b.radio_button :location_of_passing, 'Other Location' %> Other Location
+        </label>
+        </div>
+
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Help!
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+
+        </aside>
+      </div>
+      <% end %>
+    </div>
+    </fieldset>
+  <h3>Finish</h3>
+    <fieldset>
+      <div id="update-response">
+      </div>
+    </fieldset>
+  <% end %>

@@ -1,0 +1,10 @@
+$('#passing-plan').html("<%= j render('form').html_safe %>");
+$('#get-burial').click(function() {
+  // bind click event to link
+
+  $.get('<%= user_burial_new_path %>');
+});
+$('#get-cremation').click(function() {
+  // bind click event to link
+  $.get('<%= user_cremation_new_path %>');
+});
