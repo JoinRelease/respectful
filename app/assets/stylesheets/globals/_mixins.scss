@@ -1,0 +1,11 @@
+@mixin button-variant-active($color, $background, $border) {
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    color: $color;
+    background-color: $background;
+    border-color: $border;
+  }
+}

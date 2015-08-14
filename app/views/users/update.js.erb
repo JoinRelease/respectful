@@ -1,0 +1,5 @@
+$('#update-response').html("<%= j render('update').html_safe %>");
+$('#get-started').click(function() { // bind click event to link
+  $("#user-tabs").tabs("option", "active", 1 );
+});
+

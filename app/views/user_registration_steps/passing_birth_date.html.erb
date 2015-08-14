@@ -1,0 +1,15 @@
+<h1>What was the date of birth of the deceased?</h1>
+
+<%= render layout: 'form' do |f| %>
+  <%= f.fields_for :passing do |b| %>
+    <div class="field">
+      <%= b.label :date_of_birth %><br />
+      <div class="input-group datetimepicker">
+        <%= b.text_field :date_of_birth, class: 'form-control' %>
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+      </div>
+    </div>
+  <% end %>
+<% end %>

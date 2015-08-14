@@ -1,0 +1,25 @@
+$icon-font-path: 'bootstrap-sass-official/assets/fonts/bootstrap/';
+$turquoise: #7ec3c8;
+$orange: #f36639;
+$orange-active: #f5835e;
+$twitter-blue: #4199ff;
+$twitter-blue-active: #65acff;
+$facebook-blue: #526eb9;
+$facebook-blue-active: #7389c6;
+$instagram-black: #353535;
+$youtube-red: #cd181f;
+$concrete: #d9d9d9;
+$grit-red: #ef414a;
+$grit-red-active: #f15960;
+
+
+// Bootstrap variable overrides
+$font-family-sans-serif: Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
+$text-color: #323648;
+$link-color: $orange;
+$link-hover-color: $orange-active;
+$navbar-inverse-bg: #1a1d29;
+$navbar-inverse-link-color: #8b8c91;
+$container-lg: 970px;
+// already have in bootstrap, but it's deprecated
+$screen-xs-min: 480px !default;

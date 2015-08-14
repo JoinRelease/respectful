@@ -1,0 +1,127 @@
+
+.wizard
+{
+
+  .steps
+  {
+
+    ul
+    {
+      li
+      {
+        width: 16.667%;
+      }
+    }
+    @media screen and (max-width: $screen-sm-min) {
+      visibility: hidden;
+      position: absolute;
+      top: -9999px;
+    }
+  }
+  .content
+  {
+    overflow-y: auto;
+    height: auto;
+    background-color: #FFFFFF;
+    font-size: 16px;
+    .header
+    {
+      color: #0079D1;
+      font-size: 34px;
+      margin-bottom: 20px;
+      text-align: center;
+
+    }
+    .subtext
+    {
+      text-align: center;
+    }
+    .form-label
+    {
+      color: #A9A9A9;
+      font-weight: normal;
+    }
+    .frame
+    {
+      box-sizing: border-box;
+      display: block;
+      color: #000000;
+      line-height: 24px;
+      outline-color: #000000;
+      width: 310px;
+
+
+      @media screen and (max-width: $screen-md-min) and (min-width: $screen-sm-min)
+      {
+        width: 210%
+
+      }
+      @media screen and (min-width: $screen-sm-min)
+      {
+         margin-top: 20px;
+      }
+
+
+
+      ul
+      {
+        border: 1px solid #e1e1e1;
+        border-radius: 6px;
+        margin-top: 0;
+        margin-bottom: 10px;
+        outline: 0 !important;
+        li
+        {
+           padding: 15px 30px 15px 30px;
+           text-align: left;
+        }
+
+
+        .frame-head
+        {
+          background: #e1e1e1;
+          outline: 0 !important;
+          list-style: none;
+          font-size: 20px;
+          .center
+          {
+            text-align: center;
+          }
+        }
+
+        .disc-item
+        {
+          margin-left: 50px;
+          list-style-type: disc;
+          font-size: 16px;
+        }
+      }
+
+    }
+    .btn-group
+    {
+      label {
+        display: block;
+        padding-left: 15px;
+        text-indent: -15px;
+      }
+      input {
+        width: 13px;
+        height: 13px;
+        padding: 0;
+        margin:0;
+        vertical-align: bottom;
+        position: relative;
+        top: -1px;
+        *overflow: hidden;
+      }
+    }
+    .spouse-icon
+    {
+      content: "\E608";
+    }
+  }
+
+
+}
+
