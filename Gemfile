@@ -35,6 +35,7 @@ gem 'bundler', '>= 1.8.4'
 gem 'devise'
 gem 'sidekiq'
 gem 'high_voltage'
+gem 'wicked'
 
 # Assets
 gem 'non-stupid-digest-assets'
