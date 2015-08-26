@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   end
 
   namespace :user do
+    resources :after_signup
     get '/registration'      => 'users#registration'
     patch '/registration/update' => 'users#update', as: :registration_update
     get '/plans/new' => 'plans#new', as: :plan_new

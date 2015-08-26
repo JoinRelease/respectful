@@ -1,0 +1,51 @@
+<div class="wizard">
+  <%= form_for @user, url: wizard_path,  method: :put do |f| %>
+    <legend>Profile Information</legend>
+    <div class="row content">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>Let's get started by getting to know you.</span>
+      </div>
+      <div class="error col-md-12 col-sm-12 col-xs-12">
+        <span></span>
+      </div>
+
+      <br>
+
+      <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+        <%= f.label :first_name, 'First Name *', class: 'form-label' %><br />
+        <%= f.text_field :first_name, class: 'form-control required' %>
+        <br>
+        <%= f.label :last_name, 'Last Name *', class: 'form-label' %><br />
+        <%= f.text_field :last_name, class: 'form-control required' %>
+        <br>
+        <%= f.label :phone_number, 'Phone Number *', class: 'form-label' %><br />
+        <%= f.text_field :phone_number, class: 'form-control required number' %>
+        <br>
+
+        <p class="form-label">(*) Mandatory</p>
+
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Help!
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+
+        </aside>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-3 pull-right actions">
+        <%= f.submit "Next", class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end -%>
+</div>

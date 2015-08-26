@@ -1,16 +1,15 @@
 .radios
   {
     display: inline-block;
-  .input_hidden {
-    position: absolute;
-    left: -9999px;
-  }
 
-  .radio-selected {
-    background-color: #2184be;
-    color: #FFFFFF
+    .input-hidden {
+      display:none;
+    }
 
-  }
+    input[type="radio"]:checked + label {
+        background-color: #2184be;
+        color: #FFFFFF
+    }
 
    label {
 
@@ -82,23 +81,6 @@
 .wizard
 {
 
-  .steps
-  {
-
-    ul
-    {
-      li
-      {
-        width: 16.667%;
-      }
-    }
-    @media screen and (max-width: $screen-sm-min) {
-      visibility: hidden;
-      position: absolute;
-      top: -9999px;
-
-    }
-  }
   .content
   {
     background-color: #FFFFFF;
@@ -180,27 +162,22 @@
         *overflow: hidden;
       }
     }
-    .spouse-icon
-    {
-      content: "\E608";
-    }
   }
 
   .actions
   {
-    ul
+    .btn
     {
-      li
+      width: 200px;
+      height: 75px;
+      text-align: center;
+      display: table-cell;
+      vertical-align: middle;
+      font-size: 20px;
+      @media screen and (max-width: $screen-sm-max)
       {
-        width: 200px;
-        height: 200px;
-        text-align: center;
-        font-size: 20px;
-        @media screen and (max-width: $screen-sm-max)
-        {
-          width: 120px;
-          height: 120px;
-        }
+        width: 120px;
+        height: 48px;
       }
     }
   }
