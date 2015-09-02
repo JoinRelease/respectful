@@ -1,0 +1,50 @@
+<div class="wizard">
+  <%= form_for @burial, url: wizard_path,  method: :put do |f| %>
+    <legend>Type of religion/culture</legend>
+    <div class="row content">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>Sounds like a nice touch.</span>
+      </div>
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>What type of culture or religion does <%= @passing.first_name %> identify with?</span>
+      </div>
+
+      <br>
+
+      <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+        <div class= "dropdowns">
+          <%= f.collection_select :religion_culture_type, Religion.order(:name),:name,:name, include_blank: true, class: 'form-control' %>
+          <br />
+          <%= f.collection_select :religion_culture_type, Culture.order(:name),:name,:name, include_blank: true, class: 'form-control' %>
+
+        </div>
+        <p class="form-label">(*) Mandatory</p>
+
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Help!
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+
+        </aside>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-3 pull-left actions">
+        <%= link_to "Back", previous_wizard_path, class: 'btn btn-primary' %>
+      </div>
+      <div class="col-md-3 pull-right actions">
+        <%= f.submit "Next", class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end -%>
+</div>

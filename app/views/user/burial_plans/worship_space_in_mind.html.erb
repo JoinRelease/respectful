@@ -1,0 +1,55 @@
+<div class="wizard">
+  <%= form_for @burial, url: wizard_path,  method: :put do |f| %>
+    <legend>Worship Space</legend>
+    <div class="row content">
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>Sounds like a nice touch</span>
+      </div>
+      <div class="header col-md-12 col-sm-12 col-xs-12">
+        <span>Do you have a worship space in mind</span>
+      </div>
+
+      <br>
+
+      <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+        <div class= "radios">
+          <%= f.radio_button :worship_space_in_mind, true, class: 'input-hidden' %>
+          <%= f.label :worship_space_in_mind, value: true, class: '' do %>
+            <div class="label-text"> Yes </div>
+          <% end -%>
+
+          <%= f.radio_button :worship_space_in_mind, false, class: 'input-hidden' %>
+          <%= f.label :worship_space_in_mind, value: false, class: '' do %>
+            <div class="label-text"> No </div>
+          <% end -%>
+        </div>
+        <p class="form-label">(*) Mandatory</p>
+
+      </div>
+      <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+        <aside class="frame">
+          <ul>
+            <li class="frame-head">
+              <div class="center">
+                Help!
+              </div>
+            </li>
+            <li class="disc-item">
+              we hope to help you in whichever way we can
+            </li>
+          </ul>
+
+        </aside>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-3 pull-left actions">
+        <%= link_to "Back", previous_wizard_path, class: 'btn btn-primary' %>
+      </div>
+      <div class="col-md-3 pull-right actions">
+        <%= f.submit "Next", class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end -%>
+</div>

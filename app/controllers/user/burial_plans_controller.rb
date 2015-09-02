@@ -1,69 +1,32 @@
 class User::BurialPlansController < User::BaseController
-  before_action :load_user
-  before_action :load_burial, only: [ :edit, :update, :destroy]
+  include Wicked::Wizard
+  steps :plan_dates, :public_service, :open_casket,  :private_viewing, :type_of_service, :religion_culture_type, :type_of_service_space, :worship_space_in_mind, :location_of_worship_space, :worship_plan_later, :address_of_service_space, :burial_site_in_mind, :burial_types_of_plans, :location_of_burial_site, :burial_space_owned
+  before_action :load_user_and_passing
 
+  def show
 
-  def index
-
-  end
-
-  def new
-    @passing = @user.passings.last
-    @burial = @passing.burial_plans.build
-    if @burial.save
-      @burial.build_service_space_address
-      @burial.build_burial_space_address
+    case step
+    when :plan_dates
       @burial.plan_dates.build
-      respond_to do |format|
-        format.js
-      end
+    when :address_of_service_space
+      @burial.build_service_space_address
+    when :location_of_burial_site
+      @burial.build_burial_space_address
     end
-  end
-
-  def create
-
-    respond_to do |format|
-      format.js
-    end
+    render_wizard
   end
 
   def update
     @burial.update_attributes(burial_params)
-    if @burial.burial_space_owned || @burial.burial_space_owned == false
-      respond_to do |format|
-        format.js
-      end
-    else
-      render nothing: true
-    end
-  end
-
-  def edit
-
-  end
-
-  def destroy
-
-  end
-
-  def show
-
+    render_wizard @burial
   end
 
   private
 
-  def load_user
+  def load_user_and_passing
     @user = current_user
-  end
-
-  def load_burial
-    # @passing = @user.passings.last
-    # if @passing.burial_plans.present?
-    #   @burial = @passing.burial_plans.last
-    # else
-    #   @burial = @passing.burial_plans.build
-    # end
-    @burial = BurialPlan.find(params[:burial_plan][:id])
+    @passing = @user.passings.last
+    @burial = @passing.burial_plans.last
   end
 
   def burial_params
