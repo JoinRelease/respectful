@@ -54,6 +54,10 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-jquery-validate'
   gem "rails-assets-fontawesome", '4.3.0'
   gem 'rails-assets-jquery-pjax'
+  gem 'rails-assets-animate-css'
+  gem 'rails-assets-wow'
+  gem 'rails-assets-FitText.js'
+  gem 'rails-assets-jquery.easing'
 end
 
 group :development do

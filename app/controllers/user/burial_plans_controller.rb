@@ -4,7 +4,6 @@ class User::BurialPlansController < User::BaseController
   before_action :load_user_and_passing
 
   def show
-
     case step
     when :plan_dates
       @burial.plan_dates.build
@@ -26,7 +25,7 @@ class User::BurialPlansController < User::BaseController
   def load_user_and_passing
     @user = current_user
     @passing = @user.passings.last
-    @burial = @passing.burial_plans.last
+    @burial = BurialPlan.find(params[:burial_plan_id])
   end
 
   def burial_params

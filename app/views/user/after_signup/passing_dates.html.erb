@@ -1,5 +1,5 @@
 <div class="wizard">
-  <%= form_for @user, url: wizard_path, method: :put do |f| %>
+  <%= form_for @user, url: wizard_path(passing_id: @passing.id), method: :put do |f| %>
     <legend>Date Information</legend>
     <div class="row content">
       <br>

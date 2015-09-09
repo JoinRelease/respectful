@@ -21,4 +21,6 @@
 //= require summernote
 //= require select2
 //= require jquery-pjax
+//= require wow
+//= require jquery.easing
 //= require_tree .
