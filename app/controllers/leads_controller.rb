@@ -4,9 +4,13 @@ class LeadsController < ApplicationController
     lead = Lead.new lead_params
     respond_to do |format|
       if lead.save
-        format.js { message: success_message }
+        @success = true
+        @message = success_message
+        format.js
       else
-        format.js { error: error_message(lead.errors)}
+        @success = false
+        @message = error_message(lead.errors)
+        format.js
       end
     end
   end
@@ -18,7 +22,7 @@ class LeadsController < ApplicationController
   end
 
   def success_message
-    'Thanks for signing up!'
+    "We've got your info and we'll be in touch soon"
   end
 
   def error_message(errors)
