@@ -61,6 +61,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-wow'
   gem 'rails-assets-FitText.js'
   gem 'rails-assets-jquery.easing'
+  gem 'rails-assets-jquery-maskedinput'
 end
 
 group :development do

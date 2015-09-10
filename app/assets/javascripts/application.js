@@ -24,4 +24,5 @@
 //= require wow
 //= require jquery.easing
 //= require fancybox
+//= require jquery-maskedinput
 //= require_tree .
