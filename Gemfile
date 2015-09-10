@@ -34,6 +34,7 @@ gem 'unicorn'
 gem 'bundler', '>= 1.8.4'
 gem 'devise'
 gem 'sidekiq'
+gem 'sinatra', require: false
 gem 'high_voltage'
 gem 'wicked'
 gem 'fancybox2-rails'

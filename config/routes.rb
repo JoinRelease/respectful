@@ -1,12 +1,17 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   devise_for :user
   root to: 'landing#index'
+  authenticate :user do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
   put '/lead_new' => 'leads#create', as: :new_lead
 
-  authenticated :user do
-    root 'user/users#show', as: :authenticated_root
-  end
+  # authenticated :user do
+  #   root 'user/users#show', as: :authenticated_root
+  # end
 
   namespace :user do
     resources :after_signup
