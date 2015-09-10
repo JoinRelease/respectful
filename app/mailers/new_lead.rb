@@ -3,6 +3,6 @@ class NewLead < ApplicationMailer
 
   def send_notification(lead)
     @lead = lead
-    mail(to: 'tai@joinrespectful.com', subject: 'A new lead has been created')
+    mail(to: 'tai@joinrespectful.com, aj@joinrespectful.com', subject: 'A new lead has been created')
   end
 end
