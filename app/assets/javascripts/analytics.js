@@ -6,6 +6,7 @@ jQuery(function($){
   $('#quote-submit').on('click', function(event){
     event.preventDefault();
     ga('send', 'event', 'quote-submit', 'click', $(this).data('ga-label'));
+    $(this).submit();
   });
   $('.call-button').on('click', function(event){
     event.preventDefault();
