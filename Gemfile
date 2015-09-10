@@ -36,6 +36,7 @@ gem 'devise'
 gem 'sidekiq'
 gem 'high_voltage'
 gem 'wicked'
+gem 'fancybox2-rails'
 
 # Assets
 gem 'non-stupid-digest-assets'

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   devise_for :user
+  root to: 'landing#index'
+
+  put '/lead_new' => 'leads#create', as: :new_lead
 
   authenticated :user do
     root 'user/users#show', as: :authenticated_root
@@ -24,7 +27,6 @@ Rails.application.routes.draw do
     # patch '/burial_mausoleum/update' => 'burial_mausoleum_plans#update', as: :burial_mausoleum_update
   end
 
-  root to: 'high_voltage/pages#show', id: 'home'
 
   devise_scope :user do
     get 'signup'   => 'devise/registrations#new', id: 'signup'

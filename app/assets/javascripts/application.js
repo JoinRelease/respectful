@@ -23,4 +23,5 @@
 //= require jquery-pjax
 //= require wow
 //= require jquery.easing
+//= require fancybox
 //= require_tree .

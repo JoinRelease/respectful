@@ -12,7 +12,7 @@ module ApplicationHelper
     @bootstrap_classes[flash_type.to_sym]
   end
 	def site_name
-    "Join Respectful"
+    "Respectful"
   end
 
   def site_url
