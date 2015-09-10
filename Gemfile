@@ -38,6 +38,7 @@ gem 'sinatra', require: false
 gem 'high_voltage'
 gem 'wicked'
 gem 'fancybox2-rails'
+gem 'figaro'
 
 # Assets
 gem 'non-stupid-digest-assets'
