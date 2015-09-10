@@ -5,6 +5,6 @@ class Lead < ActiveRecord::Base
   validates :phone_number, presence: true
 
   def send_email
-    NewLead.send_notification(self).deliver_later
+    NewLead.send_notification(self).deliver
   end
 end
