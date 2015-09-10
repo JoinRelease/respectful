@@ -18,7 +18,7 @@ class LeadsController < ApplicationController
   private
 
   def lead_params
-    params.require(:lead).permit(:email, :phone_number)
+    params.require(:lead).permit(:name, :phone_number)
   end
 
   def success_message
