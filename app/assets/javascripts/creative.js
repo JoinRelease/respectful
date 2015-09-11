@@ -43,7 +43,9 @@ $( document ).on('ready page:load page:change page:partial-load', function(event
     });
 
     // Initialize WOW.js Scrolling Animations
-    new WOW().init();
+    new WOW({
+        mobile: false
+    }).init();
 
     $("#phone-input").mask("(999) 999-9999");
 
