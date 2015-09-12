@@ -1,4 +1,5 @@
-user = User.create(email: 'admin@joinrespectful.com', password: 'test1234', first_name: 'Respectful', last_name: 'Admin', phone_number: '999-999-999')
+user = User.create(email: 'user@joinrespectful.com', password: 'test1234', first_name: 'Respectful', last_name: 'Admin', phone_number: '999-999-999')
+Admin.create(email: 'admin@joinrespectful.com', password: 'test1234')
 passing_locs = ['home', 'hospital', 'hospice']
 religion_culture_types = ['Catholic', 'Buddhist', 'Jewish', 'Chinese']
 service_spaces = ['funeral home', 'worship space', 'another space']

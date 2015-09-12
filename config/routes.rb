@@ -1,9 +1,12 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/administer', as: 'rails_admin'
+  devise_for :admins
   devise_for :user
   root to: 'landing#index'
-  authenticate :user do
+
+  authenticate :admin do
     mount Sidekiq::Web => '/sidekiq'
   end
 
@@ -34,6 +37,12 @@ Rails.application.routes.draw do
 
 
   devise_scope :user do
+    get 'signup'   => 'devise/registrations#new', id: 'signup'
+    get '/login'   => 'devise/sessions#new', id: 'login'
+    post 'login'   => 'devise/sessions#create'
+    delete 'logout'=> 'devise/sessions#destory', id: 'logout'
+  end
+  devise_scope :admins do
     get 'signup'   => 'devise/registrations#new', id: 'signup'
     get '/login'   => 'devise/sessions#new', id: 'login'
     post 'login'   => 'devise/sessions#create'
