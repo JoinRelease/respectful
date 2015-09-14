@@ -6,7 +6,7 @@ class CremationPlan < ActiveRecord::Base
   has_one :ash_storage_address, as: :addressable, class_name: :Address, dependent: :destroy
   has_one :ash_delivery_address, as: :addressable, class_name: :Address, dependent: :destroy
 
-  validates_presence_of :passing
+  validates :passing, presence: true
 
   accepts_nested_attributes_for :plan_dates, :service_space_address, :ash_storage_address, :ash_delivery_address
 end

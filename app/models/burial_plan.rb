@@ -8,7 +8,7 @@ class BurialPlan < ActiveRecord::Base
   has_one :burial_space_address, as: :addressable, class_name: :Address, dependent: :destroy
 
 
-  validates_presence_of :passing
+  validates :passing, presence: true
 
   accepts_nested_attributes_for :plan_dates, :service_space_address, :burial_space_address
 
