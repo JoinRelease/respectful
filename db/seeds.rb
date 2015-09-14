@@ -105,4 +105,11 @@ BurialMausoleumPlan.create do |b|
   b.double_plot = 'maybe'
 end
 
+5.times do |i|
+  Lead.create do |l|
+    l.name = ['john doe', 'jane doe'].sample + ' ' + i.to_s
+    l.phone_number =  '(999) 999-9999'
+  end
+end
+
 

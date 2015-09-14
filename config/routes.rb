@@ -16,6 +16,11 @@ Rails.application.routes.draw do
   #   root 'user/users#show', as: :authenticated_root
   # end
 
+  namespace :admin do
+    root to: 'leads#index'
+    resources :leads
+  end
+
   namespace :user do
     resources :after_signup
     resources :burial_plans

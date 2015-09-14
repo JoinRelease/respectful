@@ -1,5 +1,14 @@
-FactoryGirl.define do  factory :admin do
-    
+FactoryGirl.define do
+
+  factory :lead do
+    name { Faker::Name.name }
+    phone_number { Faker::PhoneNumber.phone_number }
+  end
+
+  factory :admin do
+    email { Faker::Internet.email }
+    password 'test1234'
+    password_confirmation 'test1234'
   end
 
   factory :user do
