@@ -1,3 +1,7 @@
+require 'simplecov'
+require File.expand_path('../simplecov_helper', __FILE__)
+SimpleCov.start 'Respectful'
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)

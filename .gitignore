@@ -34,3 +34,6 @@ public/uploads
 
 # Spec examples
 /spec/examples.txt
+
+# Test coverage results
+/coverage
