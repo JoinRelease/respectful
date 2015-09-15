@@ -37,3 +37,6 @@ public/uploads
 
 # Test coverage results
 /coverage
+
+# db dump
+dump.rdb

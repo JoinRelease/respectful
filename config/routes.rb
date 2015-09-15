@@ -48,7 +48,6 @@ Rails.application.routes.draw do
     delete 'logout'=> 'devise/sessions#destory', id: 'logout'
   end
   devise_scope :admins do
-    get 'signup'   => 'devise/registrations#new', id: 'signup'
     get '/login'   => 'devise/sessions#new', id: 'login'
     post 'login'   => 'devise/sessions#create'
     delete 'logout'=> 'devise/sessions#destory', id: 'logout'
