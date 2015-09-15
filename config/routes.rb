@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'leads#index'
     resources :leads
+    get '/call' => 'calls#index', as: :call
+    post '/call' => 'calls#create_call'
   end
 
   namespace :user do

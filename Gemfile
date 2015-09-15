@@ -41,6 +41,7 @@ gem 'fancybox2-rails'
 gem 'figaro'
 gem 'rails_admin'
 gem 'pundit'
+gem 'twilio-ruby'
 
 # Assets
 gem 'non-stupid-digest-assets'
