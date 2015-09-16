@@ -30,6 +30,7 @@
         <ul class="nav navbar-nav">
           <li class="<%= 'active' if current_page?(admin_root_path) %>"><%= link_to "Leads", admin_root_path %></li>
           <li class="<%= 'active' if current_page?(admin_call_path) %>"><%= link_to "Place Call", admin_call_path %></li>
+          <li class="<%= 'active' if current_page?(admin_call_connect_path) %>"><%= link_to "Connect Calls", admin_call_connect_path %></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to 'Main Site', root_path %></li>

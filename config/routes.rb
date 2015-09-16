@@ -12,15 +12,13 @@ Rails.application.routes.draw do
 
   put '/lead_new' => 'leads#create', as: :new_lead
 
-  # authenticated :user do
-  #   root 'user/users#show', as: :authenticated_root
-  # end
-
   namespace :admin do
     root to: 'leads#index'
     resources :leads
     get '/call' => 'calls#index', as: :call
     post '/call' => 'calls#create_call'
+    get '/call_connect' => 'call_connect#index'
+    post '/place_call_connect' => 'call_connect#create', as: :place_call_connect
   end
 
   namespace :user do

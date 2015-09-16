@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
     user_after_signup_path
   end
   def after_sign_in_path_for(admin)
-    rails_admin_path
+    admin_root_path
   end
 end

@@ -1,0 +1,13 @@
+<div class="row">
+
+<div class="col-md-12 text-center" >
+  <%= form_tag(admin_place_call_connect_path) do %>
+    <%= text_field_tag(:phone_1, '+15105200634') %>
+    <%= text_field_tag(:phone_2, nil, placeholder: 'Number to Call') %>
+
+    <%= submit_tag("Call", class: 'btn btn-primary') %>
+
+  <% end %>
+</div>
+
+</div>
