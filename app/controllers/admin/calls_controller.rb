@@ -1,6 +1,7 @@
 class Admin::CallsController < Admin::BaseController
+  skip_before_action :authenticate_admin!, only: [:create_call]
   before_action :set_twilio_token, only: [:index]
-  skip_before_filter :authenticate_admin, only: [:create_call]
+  skip_before_filter :verify_authenticity_token, only: [:create_call]
 
   def index
   end
