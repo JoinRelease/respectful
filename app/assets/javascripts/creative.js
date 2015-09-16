@@ -49,4 +49,6 @@ $( document ).on('ready page:load page:change page:partial-load', function(event
 
     $("#phone-input").mask("(999) 999-9999");
 
+    new TwilioDevice();
+
 }); // End of use strict
