@@ -42,6 +42,7 @@ gem 'figaro'
 gem 'rails_admin'
 gem 'pundit'
 gem 'twilio-ruby'
+gem 'turbolinks-redirect'
 
 # Assets
 gem 'non-stupid-digest-assets'

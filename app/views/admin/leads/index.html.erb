@@ -14,6 +14,7 @@
       <td><%= lead.created_at %></td>
       <td><%= lead.name %></td>
       <td><%= lead.phone_number %></td>
+      <td> <%= link_to 'Upgrade', admin_lead_upgrade_form_path(lead_id: lead.id), data: {modal: true}%> </td>
     </tr>
   <% end %>
   </tbody>

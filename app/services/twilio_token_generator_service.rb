@@ -1,7 +1,7 @@
 class TwilioTokenGeneratorService
 
   def process
-    capability = twilio_capability()
+    capability = twilio_capability
     capability.generate
   end
 

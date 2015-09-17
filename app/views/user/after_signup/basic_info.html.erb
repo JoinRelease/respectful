@@ -13,13 +13,13 @@
 
       <div class="col-md-6 col-sm-6 col-xs-12 text-left">
         <%= f.label :first_name, 'First Name *', class: 'form-label' %><br />
-        <%= f.text_field :first_name, class: 'form-control required' %>
+        <%= f.text_field :first_name, value: @user.lead.name, class: 'form-control required' %>
         <br>
         <%= f.label :last_name, 'Last Name *', class: 'form-label' %><br />
         <%= f.text_field :last_name, class: 'form-control required' %>
         <br>
         <%= f.label :phone_number, 'Phone Number *', class: 'form-label' %><br />
-        <%= f.text_field :phone_number, class: 'form-control required number' %>
+        <%= f.text_field :phone_number, value: @user.lead.phone_number, class: 'form-control required number' %>
         <br>
 
         <p class="form-label">(*) Mandatory</p>

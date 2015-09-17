@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :cremation_plans, through: :passings
   has_many :burial_mausoleum_plans, through: :burial_plans
   has_many :burial_cemetery_plans, through: :burial_plans
+  has_one :lead, dependent: :destroy
 
 
   accepts_nested_attributes_for :passings, reject_if: :all_blank, allow_destroy: true

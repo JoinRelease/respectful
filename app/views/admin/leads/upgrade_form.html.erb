@@ -1,0 +1,15 @@
+<% content_for :title do %>
+  <p>Upgrade <%= @lead.name %> to User</p>
+<% end %>
+  <div class="col-md-10 col-md-offset-1">
+  <%= form_for(User.new, url: admin_lead_upgrade_path, remote: request.xhr?, html: { data: { modal: true } }) do |f| %>
+    <%= f.hidden_field :lead_id, value: @lead.id %>
+    <%= f.label :email, 'Email' %>
+    <%= f.text_field :email, class: 'form-control'%>
+
+    <br>
+    <div class="text-center">
+      <%= f.submit 'Create', class: 'btn btn-primary btn-lg btn-unrounded' %>
+    </div>
+  <% end -%>
+  </div>

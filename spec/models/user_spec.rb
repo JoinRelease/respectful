@@ -20,6 +20,7 @@ RSpec.describe User do
   it { should have_many(:cremation_plans).through(:passings) }
   it { should have_many(:burial_cemetery_plans).through(:burial_plans) }
   it { should have_many(:burial_mausoleum_plans).through(:burial_plans) }
+  it { should have_one(:lead) }
 
   it { should accept_nested_attributes_for(:passings) }
 

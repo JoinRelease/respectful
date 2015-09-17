@@ -14,7 +14,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'leads#index'
-    resources :leads
+    resources :leads, only: [:index]
+    get '/upgrade_lead' => 'leads#upgrade_form', as: :lead_upgrade_form
+    post '//upgrade_lead' => 'leads#upgrade', as: :lead_upgrade
     get '/call' => 'calls#index', as: :call
     post '/call' => 'calls#create_call'
     get '/call_connect' => 'call_connect#index'

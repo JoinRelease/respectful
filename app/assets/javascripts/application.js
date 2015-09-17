@@ -11,6 +11,8 @@
 // about supported directives.
 //
 //= require jquery
+//= require turbolinks
+//= require turbolinks.redirect
 //= require bootstrap-sass-official
 //= require jquery-ujs
 //= require jquery-ui

@@ -16,7 +16,7 @@ class TwilioCallTwiMLGeneratorService
   def process
     Twilio::TwiML::Response.new do |r|
       if VALID_PHONE_NUMBER_REGEX.match(phone_number)
-        r.Dial :callerId => ENV['TWILIO_VERIFIED_NUMBER'] do |d| # callerId is number from which call is made.
+        r.Dial callerId: ENV['TWILIO_VERIFIED_NUMBER'] do |d| # callerId is number from which call is made.
           d.Number(CGI::escapeHTML phone_number) # The number to call
         end
       else
