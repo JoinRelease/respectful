@@ -6,4 +6,10 @@ class Passing < ActiveRecord::Base
   has_many :burial_cemetery_plans, through: :burial_plans
   has_many :burial_mausoleum_plans, through: :burial_plans
   has_many :cremation_plans, dependent: :delete_all, inverse_of: :passing
+
+  accepts_nested_attributes_for :passing_address, reject_if: :all_blank, allow_destroy: true
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

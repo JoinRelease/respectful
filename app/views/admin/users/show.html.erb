@@ -1,0 +1,363 @@
+<div class="row panel panel-primary">
+<div class="panel-heading"> User</div>
+  <div class="col-md-12 panel-body">
+    <legend>
+      <%= @user.full_name %> &nbsp;
+      <%= link_to '', edit_admin_user_path(@user), class: 'fa fa-pencil-square-o', title: 'Edit' %>
+    </legend>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <table class="table">
+          <thead>
+            <tr>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td><b>Name:</b></td>
+              <td><%= @user.full_name %></td>
+            </tr>
+            <tr>
+              <td><b>Email:</b></td>
+              <td><%= @user.email %></td>
+            </tr>
+            <tr>
+              <td><b>Phone:</b></td>
+              <td><%= @user.phone_number %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="panel panel-info">
+  <div class="panel-heading">Passings &nbsp; <%= link_to 'New', edit_admin_user_path(@user), title: 'New' %></div>
+  <div class="panel-body">
+    <% @user.passings.each do |passing| %>
+      <div class="row">
+        <div class="col-md-12">
+          <legend>
+            <%= passing.full_name %> &nbsp;
+            <%= link_to '', edit_admin_user_path(@user), class: 'fa fa-pencil-square-o', title: 'Edit' %>
+          </legend>
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <table class="table">
+                <thead>
+                  <tr>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td><b>Name:</b></td>
+                    <td><%= passing.full_name %></td>
+                  </tr>
+                  <tr>
+                    <td><b>Relation to <%= @user.first_name%>:</b></td>
+                    <td><%= passing.relation %></td>
+                  </tr>
+                  <tr>
+                    <td><b>Date Of Birth:</b></td>
+                    <td><%= passing.date_of_birth %></td>
+                  </tr>
+                  <tr>
+                    <td><b>Date Of Passing:</b></td>
+                    <td><%= passing.date_of_passing %></td>
+                  </tr>
+                  <tr>
+                    <td><b>Current Location:</b></td>
+                    <td><%= passing.location_of_passing %></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-warning">
+        <div class="panel-heading">Burial Plans &nbsp; <%= link_to 'New', new_admin_burial_plan_path(passing_id: passing.id) %></div>
+        <div class="panel-body">
+          <% passing.burial_plans.each_with_index do |burial_plan, i| %>
+            <div class="row crem-burial-plan">
+              <div class="col-md-12">
+                <legend>
+                  Burial Plan <%= i + 1 %>: <%= passing.full_name %>
+                  &nbsp;
+                  <button class="btn btn-primary btn-burial"><i id="burial-toggle" class="fa fa-plus-square"></i></button>
+
+                  <%= link_to '', edit_admin_burial_plan_path(burial_plan), class: 'pull-right fa fa-pencil-square-o'%>
+                </legend>
+                <div class="row collapse" id="burial-collapse">
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        <tr>
+                          <td><b>Public Service:</b></td>
+                          <td><%= human_bool(burial_plan.public_service) %></td>
+                        </tr>
+                        <tr>
+                          <td><b>Open Casket:</b></td>
+                          <td><%= human_bool(burial_plan.open_casket) %></td>
+                        </tr>
+                        <tr>
+                          <td><b>Private Viewing:</b></td>
+                          <td><%= human_bool(burial_plan.private_viewing) %></td>
+                        </tr>
+                        <tr>
+                          <td><b>Religious/Cultural Service:</b></td>
+                          <td><%= human_bool(burial_plan.religious_cultural_service) %></td>
+                        </tr>
+                        <% if burial_plan.religious_cultural_service %>
+                          <tr>
+                            <td><b>Religious/Cultural Identification:</b></td>
+                            <td><%= burial_plan.religion_culture_type %></td>
+                          </tr>
+                          <tr>
+                            <td><b>Type of Service Space:</b></td>
+                            <td><%= burial_plan.type_of_service_space %></td>
+                          </tr>
+                          <tr>
+                            <td><b>Address of Service Space:</b></td>
+                            <td><%= burial_plan.service_space_address.humanize %></td>
+                          </tr>
+                          <% if burial_plan.type_of_service_space == 'worship space' %>
+                            <% if burial_plan.worship_space_in_mind %>
+                              <tr>
+                                <td><b>Worship Space:</b></td>
+                                <td><%= burial_plan.worship_space %></td>
+                              </tr>
+                            <% else %>
+                              <tr>
+                                <td><b>Worship Space:</b></td>
+                                <td>None in Mind</td>
+                              </tr>
+                            <% end -%>
+                          <% end -%>
+                        <% end -%>
+                        <% if burial_plan.burial_space_in_mind %>
+                          <tr>
+                            <td><b>Address of Burial Space:</b></td>
+                            <td><%= burial_plan.burial_space_address.humanize %></td>
+                          </tr>
+                          <tr>
+                            <td><b>Burial Space Owned:</b></td>
+                            <td><%= human_bool(burial_plan.burial_space_owned)%></td>
+                          </tr>
+                        <% else %>
+                          <tr>
+                            <td><b>Burial Space:</b></td>
+                            <td>None in Mind</td>
+                          </tr>
+                        <% end -%>
+                      </tbody>
+                    </table>
+                  </div>
+                  <% burial_plan.burial_cemetery_plans.each do |cemetery_plan| %>
+                    <div class="row maus-cemetery-plan">
+                      <div class="col-md-12">
+                        <legend>Cemetery Plan: <%= passing.full_name %>
+                        &nbsp;
+                        <button class="btn btn-primary btn-cem"><i id="cem-toggle" class="fa fa-plus-square"></i></button>
+                        </legend>
+                        <div class="row collapse" id="cem-collapse">
+                          <div class="col-md-12 col-sm-12 col-xs-12">
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                </tr>
+                              </thead>
+
+                              <tbody>
+                                <% if cemetery_plan.cemetery_section != 'no' %>
+                                  <tr>
+                                    <td><b>Cemetery Section:</b></td>
+                                    <td><%= cemetery_plan.cemetery_section_name %></td>
+                                  </tr>
+                                <% end -%>
+                                <tr>
+                                  <td><b>Liner/Vault Preference:</b></td>
+                                  <td><%= cemetery_plan.liner_vault_preference %></td>
+                                </tr>
+                                <tr>
+                                  <td><b>Flat/Upright Headstone:</b></td>
+                                  <td><%= cemetery_plan.headstone_preference %></td>
+                                </tr>
+                                <% if cemetery_plan.double_plot != 'no' %>
+                                  <tr>
+                                    <td><b>Double Plot:</b></td>
+                                    <td><%= cemetery_plan.double_plot%></td>
+                                  </tr>
+                                  <tr>
+                                    <td><b>Type of Double Plot:</b></td>
+                                    <td><%= cemetery_plan.type_of_double_plot %></td>
+                                  </tr>
+                                <% end -%>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% end -%>
+                  <% burial_plan.burial_mausoleum_plans.each do |maus_plan| %>
+                    <div class="row maus-cemetery-plan">
+                      <div class="col-md-12">
+                        <legend>Mausoleum Plan: <%= passing.full_name %>
+                        &nbsp;
+                        <button class="btn btn-primary btn-maus"><i id="maus-toggle" class="fa fa-plus-square"></i></button>
+                        </legend>
+                        <div class="row collapse" id="mausoleum-collapse">
+                          <div class="col-md-12 col-sm-12 col-xs-12">
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                </tr>
+                              </thead>
+
+                              <tbody>
+                                <tr>
+                                  <td><b>Type Of Mausoleum:</b></td>
+                                  <td><%= maus_plan.type_of_mausoleum %></td>
+                                </tr>
+                                <% if maus_plan.mausoleum_section != 'no' %>
+                                  <tr>
+                                    <td><b>Mausoleum Section:</b></td>
+                                    <td><%= maus_plan.mausoleum_section_name %></td>
+                                  </tr>
+                                <% end -%>
+                                <tr>
+                                  <td><b>Height Preference:</b></td>
+                                  <td><%= maus_plan.height%></td>
+                                </tr>
+                                <tr>
+                                  <td><b>Double Plot:</b></td>
+                                  <td><%= maus_plan.double_plot %></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% end -%>
+                </div>
+              </div>
+            </div>
+          <% end -%>
+        </div>
+      </div>
+      <div class="panel panel-success">
+        <div class="panel-heading">Cremation Plans &nbsp; </div>
+        <div class="panel-body">
+          <% passing.cremation_plans.each_with_index do |cremation_plan, i| %>
+            <div class="row crem-burial-plan">
+              <div class="col-md-12">
+                <legend>Cremation Plan <%= i + 1 %>: <%= passing.full_name %>
+                &nbsp;
+                <button class="btn btn-primary btn-cremation"><i id="cremation-toggle" class="fa fa-plus-square"></i></button>
+                </legend>
+                <div class="row collapse" id="cremation-collapse">
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        <tr>
+                          <td><b>Public Service:</b></td>
+                          <td><%= human_bool(cremation_plan.public_service) %></td>
+                        </tr>
+                        <tr>
+                          <td><b>Open Casket:</b></td>
+                          <td><%= human_bool(cremation_plan.open_casket) %></td>
+                        </tr>
+                        <tr>
+                          <td><b>Private Viewing:</b></td>
+                          <td><%= human_bool(cremation_plan.private_viewing) %></td>
+                        </tr>
+                        <tr>
+                          <td><b>Religious/Cultural Service:</b></td>
+                          <td><%= human_bool(cremation_plan.religious_cultural_service) %></td>
+                        </tr>
+                        <% if cremation_plan.religious_cultural_service %>
+                          <tr>
+                            <td><b>Religious/Cultural Identification:</b></td>
+                            <td><%= cremation_plan.religion_culture_type %></td>
+                          </tr>
+                          <tr>
+                            <td><b>Type of Service Space:</b></td>
+                            <td><%= cremation_plan.type_of_service_space %></td>
+                          </tr>
+                          <tr>
+                            <td><b>Address of Service Space:</b></td>
+                            <td><%= cremation_plan.service_space_address.humanize %></td>
+                          </tr>
+                          <% if cremation_plan.type_of_service_space == 'worship space' %>
+                            <% if cremation_plan.worship_space_in_mind %>
+                              <tr>
+                                <td><b>Worship Space:</b></td>
+                                <td><%= cremation_plan.worship_space %></td>
+                              </tr>
+                            <% else %>
+                              <tr>
+                                <td><b>Worship Space:</b></td>
+                                <td>None in Mind</td>
+                              </tr>
+                            <% end -%>
+                          <% end -%>
+                        <% end -%>
+                        <tr>
+                          <td><b>Present During Cremation:</b></td>
+                          <td><%= human_bool(cremation_plan.present_during_cremation) %></td>
+                        </tr>
+                        <tr>
+                          <td><b>Ash Resting Space:</b></td>
+                          <td><%= human_bool(cremation_plan.place_of_ash_storage) %></td>
+                        </tr>
+                        <% if cremation_plan.ash_storage_space_in_mind %>
+                          <tr>
+                            <td><b>Address of Resting Space:</b></td>
+                            <td><%= cremation_plan.ash_storage_address.humanize %></td>
+                          </tr>
+                          <tr>
+                            <td><b>Resting Space Owned:</b></td>
+                            <td><%= human_bool(cremation_plan.ash_storage_space_owned)%></td>
+                          </tr>
+                        <% else %>
+                          <tr>
+                            <td><b>Burial Space:</b></td>
+                            <td>None in Mind</td>
+                          </tr>
+                        <% end -%>
+                        <tr>
+                          <td><b>Ash Delivery Service:</b></td>
+                          <td><%= human_bool(cremation_plan.ash_transit_type) %></td>
+                        </tr>
+                        <% if cremation_plan.ash_transit_type != 'pickup' %>
+                          <tr>
+                            <td><b>Address To Deliver Ashes:</b></td>
+                            <td><%= cremation_plan.ash_delivery_address.humanize %></td>
+                          </tr>
+                        <% end -%>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end -%>
+    <% end -%>
+  </div>
+</div>

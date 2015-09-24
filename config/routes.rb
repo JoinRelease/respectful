@@ -1,7 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  mount RailsAdmin::Engine => '/administer', as: 'rails_admin'
+
   devise_for :admins
   devise_for :user
   root to: 'landing#index'
@@ -12,18 +12,29 @@ Rails.application.routes.draw do
 
   put '/lead_new' => 'leads#create', as: :new_lead
 
+  mount RailsAdmin::Engine => '/administer', as: 'rails_admin'
   namespace :admin do
+
     root to: 'leads#index'
     resources :leads, only: [:index]
+    resources :users
+    resources :burial_plans, only: [:new, :create, :edit, :update]
     get '/upgrade_lead' => 'leads#upgrade_form', as: :lead_upgrade_form
     post '//upgrade_lead' => 'leads#upgrade', as: :lead_upgrade
     get '/call' => 'calls#index', as: :call
     post '/call' => 'calls#create_call'
     get '/call_connect' => 'call_connect#index'
     post '/place_call_connect' => 'call_connect#create', as: :place_call_connect
+
+    devise_scope :admins do
+    get '/login'   => 'devise/sessions#new', id: 'login'
+    post 'login'   => 'devise/sessions#create'
+    delete 'logout'=> 'devise/sessions#destory', id: 'logout'
+    end
   end
 
   namespace :user do
+    root to:'users#show'
     resources :after_signup
     resources :burial_plans
     resources :burial_cemetery_plans
@@ -40,7 +51,7 @@ Rails.application.routes.draw do
     # patch '/burial_cemetery/update' => 'burial_cemetery_plans#update', as: :burial_cemetery_update
     # get '/burial_mausoleum_plan/new' => 'burial_mausoleum_plans#new', as: :burial_mausoleum_new
     # patch '/burial_mausoleum/update' => 'burial_mausoleum_plans#update', as: :burial_mausoleum_update
-  end
+
 
 
   devise_scope :user do
@@ -49,11 +60,9 @@ Rails.application.routes.draw do
     post 'login'   => 'devise/sessions#create'
     delete 'logout'=> 'devise/sessions#destory', id: 'logout'
   end
-  devise_scope :admins do
-    get '/login'   => 'devise/sessions#new', id: 'login'
-    post 'login'   => 'devise/sessions#create'
-    delete 'logout'=> 'devise/sessions#destory', id: 'logout'
+
   end
+
 
   get '/about'    => 'high_voltage/pages#show', id: 'about'
   get '/contact'  => 'high_voltage/pages#show', id: 'contact'

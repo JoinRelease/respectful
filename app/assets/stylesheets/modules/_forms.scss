@@ -1,3 +1,10 @@
+.crem-burial-plan {
+  padding-left: 50px;
+}
+.maus-cemetery-plan {
+  padding-left: 100px;
+}
+
 button
 {
   a
@@ -31,6 +38,7 @@ button
       color: rgba(0,0,0,0.44);
       margin-left: 8px;
       margin-right: 8px;
+      margin-top: 16px;
       margin-bottom: 16px;
       box-shadow: 0 4px 8px 0 rgba(81,81,81,0.15);
       padding: 20px;
@@ -46,6 +54,58 @@ button
       padding: 3px;
 
   }
+}
+.frame
+{
+  box-sizing: border-box;
+  display: block;
+  color: #000000;
+  line-height: 24px;
+  outline-color: #000000;
+
+
+  @media screen and (min-width: $screen-sm-min)
+  {
+     margin-top: 20px;
+  }
+
+
+
+  ul
+  {
+    border: 1px solid #e1e1e1;
+    border-radius: 6px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    outline: 0 !important;
+    padding-left: 0px;
+    li
+    {
+       padding: 15px 30px 15px 30px;
+       text-align: left;
+    }
+
+
+    .frame-head
+    {
+      background: #e1e1e1;
+      outline: 0 !important;
+      list-style: none;
+      font-size: 20px;
+      .center
+      {
+        text-align: center;
+      }
+    }
+
+    .disc-item
+    {
+      margin-left: 50px;
+      list-style-type: disc;
+      font-size: 16px;
+    }
+  }
+
 }
 
 .header
@@ -103,57 +163,7 @@ button
       color: #A9A9A9;
       font-weight: normal;
     }
-    .frame
-    {
-      box-sizing: border-box;
-      display: block;
-      color: #000000;
-      line-height: 24px;
-      outline-color: #000000;
 
-
-      @media screen and (min-width: $screen-sm-min)
-      {
-         margin-top: 20px;
-      }
-
-
-
-      ul
-      {
-        border: 1px solid #e1e1e1;
-        border-radius: 6px;
-        margin-top: 0;
-        margin-bottom: 10px;
-        outline: 0 !important;
-        li
-        {
-           padding: 15px 30px 15px 30px;
-           text-align: left;
-        }
-
-
-        .frame-head
-        {
-          background: #e1e1e1;
-          outline: 0 !important;
-          list-style: none;
-          font-size: 20px;
-          .center
-          {
-            text-align: center;
-          }
-        }
-
-        .disc-item
-        {
-          margin-left: 50px;
-          list-style-type: disc;
-          font-size: 16px;
-        }
-      }
-
-    }
     .btn-group
     {
       label {

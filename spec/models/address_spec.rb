@@ -3,12 +3,11 @@ require 'rails_helper'
 RSpec.describe Address do
   let(:address) { FactoryGirl.build :address }
   subject { address }
-  it { should validate_presence_of(:addressable) }
   it { should validate_presence_of(:line1) }
   it { should validate_presence_of(:city) }
   it { should validate_presence_of(:state) }
   it { should validate_presence_of(:zip) }
-  it { should_not be_valid }
+  it { should be_valid }
 
   describe '#addressable association' do
     context 'for worship_space' do

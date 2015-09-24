@@ -6,6 +6,7 @@ class Admin::LeadsController < Admin::BaseController
 
   def upgrade_form
     @lead = Lead.find(params[:lead_id])
+    js :index
     respond_modal_with @lead
   end
 
@@ -14,7 +15,7 @@ class Admin::LeadsController < Admin::BaseController
     generated_password = Devise.friendly_token.first(8)
     user = lead.create_user!(email: params[:user][:email], password: generated_password)
     sign_in(:user, user)
-    redirect_to user_after_signup_path(:basic_info), trubolinks: false
+    redirect_to edit_admin_user_path(user.id), trubolinks: false
   end
 
 end

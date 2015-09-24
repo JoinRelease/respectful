@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def after_sign_in_path_for(user)
-    user_after_signup_path
+    user_root_path
   end
   def after_sign_in_path_for(admin)
     admin_root_path

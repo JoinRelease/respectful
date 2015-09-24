@@ -23,6 +23,10 @@ RSpec.describe User do
   it { should have_one(:lead) }
 
   it { should accept_nested_attributes_for(:passings) }
+  it { should accept_nested_attributes_for(:burial_plans) }
+  it { should accept_nested_attributes_for(:cremation_plans) }
+  it { should accept_nested_attributes_for(:burial_mausoleum_plans) }
+  it { should accept_nested_attributes_for(:burial_cemetery_plans) }
 
 
   describe '#passings association' do

@@ -25,7 +25,7 @@ class User::BurialPlansController < User::BaseController
   def load_user_and_passing
     @user = current_user
     @passing = @user.passings.last
-    @burial = BurialPlan.find(params[:burial_plan_id])
+    @burial = @passing.burial_plans.last
   end
 
   def burial_params

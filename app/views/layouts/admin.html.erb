@@ -29,6 +29,7 @@
       <div class="collapse navbar-collapse" id="navbar-1">
         <ul class="nav navbar-nav">
           <li class="<%= 'active' if current_page?(admin_root_path) %>"><%= link_to "Leads", admin_root_path %></li>
+          <li class="<%= 'active' if current_page?(admin_users_path) %>"><%= link_to "Users", admin_users_path %></li>
           <li class="<%= 'active' if current_page?(admin_call_path) %>"><%= link_to "Place Call", admin_call_path %></li>
           <li class="<%= 'active' if current_page?(admin_call_connect_path) %>"><%= link_to "Connect Calls", admin_call_connect_path %></li>
         </ul>
@@ -43,6 +44,7 @@
   <div class="container">
     <%= render 'layouts/flash_messages' %>
     <%= yield %>
+    <%= insert_paloma_hook %>
   </div>
   <div id="modal-holder"></div>
 </body>

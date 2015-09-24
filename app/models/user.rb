@@ -10,7 +10,12 @@ class User < ActiveRecord::Base
   has_many :burial_mausoleum_plans, through: :burial_plans
   has_many :burial_cemetery_plans, through: :burial_plans
   has_one :lead, dependent: :destroy
+  has_one :passing_address, through: :passing
 
 
-  accepts_nested_attributes_for :passings, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :passings, :burial_plans, :cremation_plans, :burial_cemetery_plans, :burial_mausoleum_plans, reject_if: :all_blank, allow_destroy: true
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

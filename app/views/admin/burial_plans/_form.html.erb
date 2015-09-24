@@ -1,0 +1,534 @@
+<div class="row">
+  <div class="col-md-12">
+    <%= render 'shared/errors', errored_on: @burial %>
+    <%= form_for [:admin, @burial] do |f| %>
+      <div id="burial-steps">
+        <fieldset>
+          <legend><%= @burial.passing.first_name %>'s Information</legend>
+          <div class="row">
+            <div class="header col-md-12 col-sm-12 col-xs-12">
+              <span>When would you like to put <%= @burial.passing.first_name %> to rest?</span>
+            </div>
+            <div class="header error col-md-12 col-sm-12 col-xs-12">
+              <span></span>
+            </div>
+            <br>
+            <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+              <%= render partial: 'shared/plan_dates', locals: { f: f } %>
+            </div>
+            <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+              <aside class="frame">
+                <ul>
+                  <li class="frame-head">
+                    <div class="center">
+                      Quick Tips
+                    </div>
+                  </li>
+                  <li class="disc-item">
+                    we hope to help you in whichever way we can
+                  </li>
+                </ul>
+              </aside>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Type of service</legend>
+          <div class="row">
+            <div class="header col-md-12 col-sm-12 col-xs-12">
+              <span>Would you like a public service for <%= @burial.passing.first_name %>?</span>
+            </div>
+
+            <br>
+
+            <div class="col-md-5 col-sm-5 col-xs-10 col-xs-offset-1">
+              <div class= "radios">
+                <%= f.radio_button :public_service, true, class: 'input-hidden' %>
+                <%= f.label :public_service, value: true, class: '' do %>
+                  <div class="label-text"> Yes </div>
+                <% end -%>
+
+                <%= f.radio_button :public_service, false, class: 'input-hidden' %>
+                <%= f.label :public_service, value: false, class: '' do %>
+                  <div class="label-text"> No </div>
+                <% end -%>
+              </div>
+
+            </div>
+            <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+              <aside class="frame">
+                <ul>
+                  <li class="frame-head">
+                    <div class="center">
+                      Quick Tips
+                    </div>
+                  </li>
+                  <li class="disc-item">
+                    we hope to help you in whichever way we can
+                  </li>
+                </ul>
+
+              </aside>
+            </div>
+
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Open or Closed Casket</legend>
+          <div class="row">
+            <div class="header col-md-12 col-sm-12 col-xs-12">
+              <span>What about an open casket?</span>
+            </div>
+            <br>
+            <div class="col-md-5 col-sm-5 col-xs-10 col-xs-offset-1">
+              <div class= "radios">
+                <%= f.radio_button :open_casket, true, class: 'input-hidden' %>
+                <%= f.label :open_casket, value: true, class: '' do %>
+                  <div class="label-text"> Yes </div>
+                <% end -%>
+
+                <%= f.radio_button :open_casket, false, class: 'input-hidden' %>
+                <%= f.label :open_casket, value: false, class: '' do %>
+                  <div class="label-text"> No </div>
+                <% end -%>
+              </div>
+            </div>
+            <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+              <aside class="frame">
+                <ul>
+                  <li class="frame-head">
+                    <div class="center">
+                      Quick Tips
+                    </div>
+                  </li>
+                  <li class="disc-item">
+                    we hope to help you in whichever way we can
+                  </li>
+                </ul>
+              </aside>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Private Viewing</legend>
+          <div class="row">
+            <div class="header col-md-12 col-sm-12 col-xs-12">
+              <span>Would <%= @burial.passing.first_name %>'s family like to have a private viewing before the service?</span>
+            </div>
+            <br>
+            <div class="col-md-5 col-sm-5 col-xs-10 col-xs-offset-1">
+              <div class= "radios">
+                <%= f.radio_button :private_viewing, true, class: 'input-hidden' %>
+                <%= f.label :private_viewing, value: true, class: '' do %>
+                  <div class="label-text"> Yes </div>
+                <% end -%>
+
+                <%= f.radio_button :private_viewing, false, class: 'input-hidden' %>
+                <%= f.label :private_viewing, value: false, class: '' do %>
+                  <div class="label-text"> No </div>
+                <% end -%>
+
+              </div>
+            </div>
+            <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+              <aside class="frame">
+                <ul>
+                  <li class="frame-head">
+                    <div class="center">
+                      Quick Tips
+                    </div>
+                  </li>
+                  <li class="disc-item">
+                    we hope to help you in whichever way we can
+                  </li>
+                </ul>
+              </aside>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Type of Service</legend>
+          <div class="row">
+            <div class="header col-md-12 col-sm-12 col-xs-12">
+              <span>Would <%= @burial.passing.first_name %> like a religious or cultural service?</span>
+            </div>
+            <br>
+            <div class="col-md-5 col-sm-5 col-xs-10 col-xs-offset-1">
+              <div class= "radios">
+                <%= f.radio_button :religious_cultural_service, true, class: 'input-hidden' %>
+                <%= f.label :religious_cultural_service, value: true, class: '' do %>
+                  <div class="label-text"> Yes </div>
+                <% end -%>
+
+                <%= f.radio_button :religious_cultural_service, false, class: 'input-hidden' %>
+                <%= f.label :religious_cultural_service, value: false, class: '' do %>
+                  <div class="label-text"> No </div>
+                <% end -%>
+
+              </div>
+            </div>
+            <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+              <aside class="frame">
+                <ul>
+                  <li class="frame-head">
+                    <div class="center">
+                      Quick Tips
+                    </div>
+                  </li>
+                  <li class="disc-item">
+                    we hope to help you in whichever way we can
+                  </li>
+                </ul>
+              </aside>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Type of religion/culture</legend>
+          <div class="row">
+            <div class="header col-md-12 col-sm-12 col-xs-12">
+              <span>Sounds like a nice touch.</span>
+            </div>
+            <div class="header col-md-12 col-sm-12 col-xs-12">
+              <span>What type of culture or religion does <%= @burial.passing.first_name %> identify with?</span>
+            </div>
+            <br>
+            <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+              <%= f.collection_select :religion_culture_type, Religion.order(:name),:name,:name, include_blank: true, class: 'form-control' %>
+              <%= f.collection_select :religion_culture_type, Culture.order(:name),:name,:name, include_blank: true, class: 'form-control' %>
+
+            </div>
+            <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+              <aside class="frame">
+                <ul>
+                  <li class="frame-head">
+                    <div class="center">
+                      Quick Tips
+                    </div>
+                  </li>
+                  <li class="disc-item">
+                    we hope to help you in whichever way we can
+                  </li>
+                </ul>
+              </aside>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Type of Service</legend>
+          <div class="row">
+            <div class="header col-md-12 col-sm-12 col-xs-12">
+              <span>Where do you think you'd like to hold the service?</span>
+            </div>
+            <br>
+            <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+              <div class="radios center-block">
+                  <%= f.radio_button :type_of_service_space, 'funeral home', class: 'input-hidden'  %>
+                  <%= f.label :type_of_service_space, value: 'funeral home', class: '' do %>
+                    <div class="label-text"> Funeral Home</div>
+                  <% end -%>
+
+                  <%= f.radio_button :type_of_service_space, 'worship space', class: 'input-hidden'  %>
+                  <%= f.label :type_of_service_space, value: 'worship space', class: '' do %>
+                    <div class="label-text"> Worship Space </div>
+                  <% end -%>
+
+                  <%= f.radio_button :type_of_service_space, 'Burial Space', class: 'input-hidden'  %>
+                  <%= f.label :type_of_service_space, value: 'Burial Space', class: '' do %>
+                    <div class="label-text"> Burial Space</div>
+                  <% end -%>
+
+                  <%= f.radio_button :type_of_service_space, 'another space', class: 'input-hidden'  %>
+                  <%= f.label :type_of_service_space, value: 'another space', class: '' do %>
+                    <div class="label-text"> Another Space</div>
+                  <% end -%>
+              </div>
+            </div>
+            <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+              <aside class="frame">
+                <ul>
+                  <li class="frame-head">
+                    <div class="center">
+                      Quick Tips
+                    </div>
+                  </li>
+                  <li class="disc-item">
+                    we hope to help you in whichever way we can
+                  </li>
+                </ul>
+              </aside>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Type of Service</legend>
+          <div class="row">
+            <div class="header col-md-12 col-sm-12 col-xs-12">
+              <span>Sounds like a nice touch</span>
+            </div>
+            <div class="header col-md-12 col-sm-12 col-xs-12">
+              <span>Do you have a worship space in mind</span>
+            </div>
+            <br>
+            <div class="col-md-5 col-sm-5 col-xs-10 col-xs-offset-1">
+              <div class= "radios">
+                <%= f.radio_button :worship_space_in_mind, true, class: 'input-hidden' %>
+                <%= f.label :worship_space_in_mind, value: true, class: '' do %>
+                  <div class="label-text"> Yes </div>
+                <% end -%>
+
+                <%= f.radio_button :worship_space_in_mind, false, class: 'input-hidden' %>
+                <%= f.label :worship_space_in_mind, value: false, class: '' do %>
+                  <div class="label-text"> No </div>
+                <% end -%>
+
+              </div>
+            </div>
+            <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+              <aside class="frame">
+                <ul>
+                  <li class="frame-head">
+                    <div class="center">
+                      Quick Tips
+                    </div>
+                  </li>
+                  <li class="disc-item">
+                    we hope to help you in whichever way we can
+                  </li>
+                </ul>
+              </aside>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Worship Space</legend>
+          <div class="row">
+            <div class="header col-md-12 col-sm-12 col-xs-12">
+              <span>Sounds special.</span>
+            </div>
+            <div class="header col-md-12 col-sm-12 col-xs-12">
+              <span>Which worship space are you thinking about?</span>
+            </div>
+            <br>
+            <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+              <%= f.collection_select :religion_culture_type, WorshipSpace.order(:name),:name,:name, include_blank: true, class: 'form-control' %>
+            </div>
+            <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+              <aside class="frame">
+                <ul>
+                  <li class="frame-head">
+                    <div class="center">
+                      Quick Tips
+                    </div>
+                  </li>
+                  <li class="disc-item">
+                    we hope to help you in whichever way we can
+                  </li>
+                </ul>
+              </aside>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend></legend>
+          <div class="row">
+            <div class="header col-md-12 col-sm-12 col-xs-12">
+              <span>No sweat.</span>
+            </div>
+            <div class="header col-md-12 col-sm-12 col-xs-12">
+              <span>This is something we can come back to later and help you figure out.</span>
+            </div>
+            <br>
+            <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+            </div>
+            <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+              <aside class="frame">
+                <ul>
+                  <li class="frame-head">
+                    <div class="center">
+                      Quick Tips
+                    </div>
+                  </li>
+                  <li class="disc-item">
+                    we hope to help you in whichever way we can
+                  </li>
+                </ul>
+              </aside>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Worship Space</legend>
+          <div class="row">
+            <div class="header col-md-12 col-sm-12 col-xs-12">
+              <span>What's the address?</span>
+            </div>
+            <br>
+            <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+              <%= f.fields_for :service_space_address do |address| %>
+                <%= render 'shared/address', f: address %>
+              <% end -%>
+            </div>
+            <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+              <aside class="frame">
+                <ul>
+                  <li class="frame-head">
+                    <div class="center">
+                      Quick Tips
+                    </div>
+                  </li>
+                  <li class="disc-item">
+                    we hope to help you in whichever way we can
+                  </li>
+                </ul>
+              </aside>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Burial Space</legend>
+          <div class="row">
+            <div class="header col-md-12 col-sm-12 col-xs-12">
+              <span><em>High 5</em> You're doing a great job! Let's keep moving.</span>
+            </div>
+            <div class="header col-md-12 col-sm-12 col-xs-12">
+              <span>Do you have a burial site in mind?</span>
+            </div>
+            <br>
+
+
+            <div class="col-md-5 col-sm-5 col-xs-10 col-xs-offset-1">
+              <div class= "radios">
+                <%= f.radio_button :burial_space_in_mind, true, class: 'input-hidden' %>
+                <%= f.label :burial_space_in_mind, value: true, class: '' do %>
+                  <div class="label-text"> Yes </div>
+                <% end -%>
+
+                <%= f.radio_button :burial_space_in_mind, false, class: 'input-hidden' %>
+                <%= f.label :burial_space_in_mind, value: false, class: '' do %>
+                  <div class="label-text"> No </div>
+                <% end -%>
+
+              </div>
+            </div>
+            <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+              <aside class="frame">
+                <ul>
+                  <li class="frame-head">
+                    <div class="center">
+                      Quick Tips
+                    </div>
+                  </li>
+                  <li class="disc-item">
+                    we hope to help you in whichever way we can
+                  </li>
+                </ul>
+
+              </aside>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend></legend>
+          <div class="row">
+            <div class="header col-md-12 col-sm-12 col-xs-12">
+              <span>No sweat. Most people don't.</span>
+            </div>
+            <div class="header col-md-12 col-sm-12 col-xs-12">
+              <span>We can help you plan.</span>
+            </div>
+            <br>
+            <div class="subtext col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
+            <span> Would sort of plan are you thinking? </span>
+            <br/>
+            <hr>
+            <div class="row">
+              <div class="col-xs-5">
+                <button id="get-burial-cemetery" type="button" class="btn btn-primary btn-unrounded btn-block">Cemetery Plan</button>
+              </div>
+              <div class="col-xs-5 col-xs-offset-2">
+                <button id="get-burial-mausoleum" type="button" class="btn btn-primary btn-unrounded btn-block">Mausoleum Plan</button>
+              </div>
+            </div>
+          </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Worship Space</legend>
+          <div class="row">
+            <div class="header col-md-12 col-sm-12 col-xs-12">
+              <span>What's the address?</span>
+            </div>
+            <br>
+            <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+              <%= f.fields_for :burial_space_address do |address| %>
+                <%= render partial: 'shared/address', locals: { f: address } %>
+              <% end -%>
+            </div>
+            <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+              <aside class="frame">
+                <ul>
+                  <li class="frame-head">
+                    <div class="center">
+                      Quick Tips
+                    </div>
+                  </li>
+                  <li class="disc-item">
+                    we hope to help you in whichever way we can
+                  </li>
+                </ul>
+              </aside>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Worship Space</legend>
+          <div class="row">
+            <div class="header col-md-12 col-sm-12 col-xs-12">
+              <span>One last thing</span>
+            </div>
+            <div class="header col-md-12 col-sm-12 col-xs-12">
+              <span>Do you own the space?</span>
+            </div>
+            <br>
+            <div class="col-md-5 col-sm-5 col-xs-10 col-xs-offset-1">
+              <div class= "radios">
+                <%= f.radio_button :burial_space_owned, true, class: 'input-hidden' %>
+                <%= f.label :burial_space_owned, value: true, class: '' do %>
+                  <div class="label-text"> Yes </div>
+                <% end -%>
+
+                <%= f.radio_button :burial_space_owned, false, class: 'input-hidden' %>
+                <%= f.label :burial_space_owned, value: false, class: '' do %>
+                  <div class="label-text"> No </div>
+                <% end -%>
+
+              </div>
+            </div>
+            <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+              <aside class="frame">
+                <ul>
+                  <li class="frame-head">
+                    <div class="center">
+                      Quick Tips
+                    </div>
+                  </li>
+                  <li class="disc-item">
+                    we hope to help you in whichever way we can
+                  </li>
+                </ul>
+              </aside>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+        <div id="finish-response">
+          <%= f.submit 'Submit', class: 'btn btn-primary btn-lg' %>
+        </div>
+        </fieldset>
+      </div>
+    <% end -%>
+  </div>
+</div>
+
+

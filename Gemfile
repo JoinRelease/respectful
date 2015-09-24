@@ -43,6 +43,8 @@ gem 'rails_admin'
 gem 'pundit'
 gem 'twilio-ruby'
 gem 'turbolinks-redirect'
+gem 'paloma'
+gem 'cocoon'
 
 # Assets
 gem 'non-stupid-digest-assets'

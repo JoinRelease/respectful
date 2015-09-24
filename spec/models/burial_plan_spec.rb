@@ -94,5 +94,11 @@ RSpec.describe BurialPlan do
       @burial_plan.destroy
       expect{Address.find(address.id)}.to raise_error ActiveRecord::RecordNotFound
     end
+
+    it 'does not have the same address as service_space_address' do
+      burial_address = @burial_plan.burial_space_address
+      service_address = @burial_plan.service_space_address
+      expect(burial_address).not_to eq(service_address)
+    end
   end
 end

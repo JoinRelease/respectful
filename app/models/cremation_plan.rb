@@ -2,9 +2,10 @@ class CremationPlan < ActiveRecord::Base
   belongs_to :passing, inverse_of: :cremation_plans
   has_many :plan_dates, as: :dateable, dependent: :delete_all
 
-  has_one :service_space_address, as: :addressable, class_name: :Address, dependent: :destroy
-  has_one :ash_storage_address, as: :addressable, class_name: :Address, dependent: :destroy
-  has_one :ash_delivery_address, as: :addressable, class_name: :Address, dependent: :destroy
+  has_one :service_space_address, -> { where(type_of: 'service space') }, as: :addressable, class_name: :Address, dependent: :destroy
+  has_one :ash_storage_address, -> { where(type_of: 'ash storage') }, as: :addressable, class_name: :Address, dependent: :destroy
+  has_one :ash_delivery_address, -> { where(type_of: 'ash delivery') }, as: :addressable, class_name: :Address, dependent: :destroy
+
 
   validates :passing, presence: true
 

@@ -11,7 +11,7 @@ body {
   @include serif-font;
 }
 
-hr {
+hr.primary {
   border-color: $theme-primary;
   border-width: 3px;
   max-width: 50px;

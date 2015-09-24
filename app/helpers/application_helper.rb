@@ -40,4 +40,8 @@ module ApplicationHelper
     end
   end
 
+  def human_bool(bool)
+    bool ? 'Yes' : 'No'
+  end
+
 end

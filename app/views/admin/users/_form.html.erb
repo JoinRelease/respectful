@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-md-12">
+    <%= render 'shared/errors', errored_on: @user %>
+
+    <%= form_for @user, url: admin_user_path, html: {id: "user-registration-form", method: :patch } do |f| %>
+      <div class="panel panel-primary">
+        <div class="panel-heading">User Info</div>
+        <div class="panel-body">
+          <fieldset>
+            <legend>Profile Information</legend>
+            <div class="row">
+              <div class="header col-md-12 col-sm-12 col-xs-12">
+                <span>Let's get started by getting to know you.</span>
+              </div>
+              <div class="error col-md-12 col-sm-12 col-xs-12">
+                <span></span>
+              </div>
+
+              <br>
+
+              <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+                <%= f.label :first_name, 'First Name *', class: 'form-label' %><br />
+                <%= f.text_field :first_name, value: @user.lead.present? ? @user.lead.name : @user.first_name, class: 'form-control required' %>
+                <br>
+                <%= f.label :last_name, 'Last Name *', class: 'form-label' %><br />
+                <%= f.text_field :last_name, class: 'form-control required' %>
+                <br>
+                <%= f.label :phone_number, 'Phone Number *', class: 'form-label' %><br />
+                <%= f.text_field :phone_number, value: @user.lead.present? ? @user.lead.phone_number : @user.phone_number, class: 'form-control required number' %>
+                <br>
+
+                <p class="form-label">(*) Mandatory</p>
+
+              </div>
+              <div class="col-md-5 col-sm-5 col-sm-offset-1 col-xs-12">
+                <aside class="frame">
+                  <ul>
+                    <li class="frame-head">
+                      <div class="center">
+                        Help!
+                      </div>
+                    </li>
+                    <li class="disc-item">
+                      we hope to help you in whichever way we can
+                    </li>
+                  </ul>
+
+                </aside>
+              </div>
+
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <%= f.fields_for :passings do |passing_fields| %>
+        <%= render 'passing_fields', f: passing_fields %>
+      <% end -%>
+      <fieldset>
+      <legend></legend>
+      <%= link_to_add_association 'Add Passing', f, :passings, class: 'btn btn-info', render_options: {locals: {new_record: true}} %>
+      <hr>
+      <%= f.submit 'submit', class: 'btn btn-primary btn-lg' %>
+      </fieldset>
+    <% end %>
+  </div>
+</div>
